@@ -1,0 +1,55 @@
+
+HTML 檔案：liff.html
+
+html
+複製
+編輯
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LIFF 測試</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        async function initLiff() {
+            try {
+                await liff.init({ liffId: "2007392080-pdLXAx9L" });
+                if (!liff.isLoggedIn()) {
+                    liff.login();
+                }
+                const profile = await liff.getProfile();
+                const idToken = liff.getIDToken();
+                const displayName = profile.displayName;
+                const language = liff.getLanguage(); // 使用者的語言(string)
+                const version = liff.getVersion(); // LIFF SDK 版本 (string)
+                const isInClient = liff.isInClient(); // 回傳值是否為 LINE APP 存取 (bool)
+                const isLoggedIn = liff.isLoggedIn(); // 使用者是否登入 LINE 帳號 (bool)
+                const os = liff.getOS(); // 使用者作業系統 (string)
+                const lineVersion = liff.getLineVersion(); // 使用者的 LINE 版本 (string)
+                document.getElementById("displayName").textContent = "Hello, " + profile.displayName;
+                sendDataToBackend(idToken, displayName);
+            } catch (err) {
+                console.error("LIFF 初始化失敗", err);
+            }
+        }
+        async function sendDataToBackend(idToken, displayName) {
+            try {
+                const response = await fetch("https://c8f1-203-121-253-47.ngrok-free.app/liff-data", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ idToken: idToken, name: displayName })
+                });
+                const result = await response.json();
+                alert("後端回應: " + result.message);
+            } catch (err) {
+                console.error("發送資料失敗", err);
+            }
+        }
+        window.onload = initLiff;
+    </script>
+</head>
+<body>
+    <h3 id="displayName">載入中...</h3>
+</body>
+</html>
