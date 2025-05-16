@@ -55,9 +55,7 @@ import os
 #from linebot.models import *
 import requests
 import json
-from flask_cors import CORS
 app = Flask(__name__)
-CORS(app)
 #======TestSetting==========
 #CHANAL_ACCESS_TOKEN = 'C+EEXYfa4rNMmrTRCnPYVZwH2P96JBBjcdLxt7AEcr9P70YfMjv08WkD4CSyNZFeMiBl9PR+Q89Jcjk1ygvAtKBIdcyg8bEXa8qZNENMf2942IEOwtzQOqYC7XPGJxYDbgFxCbP8zioGAcS4MH9jsgdB04t89/1O/w1cDnyilFU='
 #CHANNEL_SECRET = '368027c375e4ee5435a7156aa38ee2d4'
