@@ -90,10 +90,10 @@ def liff_data():
         data = request.get_json()
         id_token = data.get("idToken")
         name = data.get("name")
-        user_id = data.get("userId")
+        user_Id = data.get("userId")
 
         # 在終端機打印收到的資料
-        print(f"收到 LIFF 資料：ID Token={id_token}, Name={name}, User ID={user_id}")
+        print(f"收到 LIFF 資料：ID Token={id_token}, Name={name}, User ID={user_Id}")
 
         # 回傳 JSON 回應
         return jsonify({"message": f"LIFF 資料已收到：{name}"})
