@@ -173,7 +173,7 @@ def create_rich_menu_1():
             rich_menu_request=rich_menu_to_create
         ).rich_menu_id
 
-        with open('static/menu.jpg', 'rb') as image:
+        with open('menu.jpg', 'rb') as image:
             line_bot_blob_api.set_rich_menu_image(
                 rich_menu_id=rich_menu_id,
                 body=bytearray(image.read()),
@@ -219,7 +219,7 @@ def handle_message(event):
                 )
             )
         elif text == "提示":#輸出音訊檔案
-            url = request.url_root + "static/Mozart1.mp3"
+            url = request.url_root + "Mozart1.mp3"
             url = url.replace("http", "https")
             app.logger.info("url=",url)
             duration = 60000 #in milliseconds
@@ -264,7 +264,8 @@ def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         if data == 'open_task_menu':
-            url = request.url_root + 'static/'
+            url = request.url_root 
+            #+ 'static/'
             url = url.replace("http", "https")
             app.logger.info("url=" + url)
             image_carousel_template = ImageCarouselTemplate(
