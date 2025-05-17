@@ -70,20 +70,6 @@ line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 # # Channel Secret
 # handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
 
-
-# @app.route("/liff-data", methods=["POST"])
-# def liff_data():
-#     try:
-#         data = request.get_json()
-#         id_token = data.get("idToken")
-#         name = data.get("name")
-#         print(f"收到的 ID Token: {id_token}")
-#         print(f"使用者名稱: {name}")
-
-#         return jsonify({"message": f"資料已收到：{name}"})
-#     except Exception as e:
-#         print(f"接收資料失敗: {str(e)}")
-#         return jsonify({"message": "接收資料失敗"}), 500
 @app.route("/liff-data", methods=["POST"])
 def liff_data():
     try:
