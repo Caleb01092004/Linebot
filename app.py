@@ -109,7 +109,7 @@ def create_rich_menu_1():
         line_bot_blob_api = MessagingApiBlob(api_client)
         areas = [
             RichMenuArea(
-                bounds=RichMenuBounds(
+                bounds=RichMenuBounds(#地圖
                     x=0,
                     y=0,
                     width=1669,
@@ -121,7 +121,7 @@ def create_rich_menu_1():
                 )
             ),
             RichMenuArea(
-                bounds=RichMenuBounds(
+                bounds=RichMenuBounds(#主線任務
                     x=1672,
                     y=0,
                     width=828,
@@ -129,19 +129,19 @@ def create_rich_menu_1():
                 ),
                 action=PostbackAction(
                     label='打開圖片選單',
-                    data='open_task_menu'
+                    data='open_task_menu1'
                 )
             ),
             RichMenuArea(
-                bounds=RichMenuBounds(
+                bounds=RichMenuBounds(#支線任務
                     x=1672,
                     y=838,
                     width=828,
                     height=848
                 ),
-                action=URIAction(
+                action=PostbackAction(
                     label='開啟網站',
-                    uri='https://www.google.com'
+                    data='open_task_menu2'
                 )
             )
         ]
@@ -249,10 +249,60 @@ def handle_message(event):
     data = event.postback.data
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
-        if data == 'open_task_menu':
-            url = request.url_root + 'static/'
-            url = url.replace("http", "https")
-            app.logger.info("url=" + url)
+        if data == 'open_task_menu1':
+            #url = request.url_root + 'static/'
+            #url = url.replace("http", "https")
+            #app.logger.info("url=" + url)
+            image_carousel_template = ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        #image_url=url+'cat1.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/cat1.jpg',
+                        action=PostbackAction(
+                            label='任務1',
+                            data = 'task1'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        #image_url=url+'cat2.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/cat2.jpg',
+                        action=PostbackAction(
+                            label='任務2',
+                            data = 'task2'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        #image_url=url+'cat3.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/cat3.jpg',
+                        action=PostbackAction(
+                            label='任務3',
+                            data = 'task3'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        #image_url=url+'cat4.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/cat4.jpg',
+                        action=PostbackAction(
+                            label='任務4',
+                            data = 'task4'
+                        )
+                    ),
+                ]
+            )
+            image_carousel_message = TemplateMessage(
+                alt_text='圖片輪播範本',
+                template=image_carousel_template
+            )
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[image_carousel_message]
+                )
+            )
+        elif data == 'open_task_menu2':
+            #url = request.url_root + 'static/'
+            #url = url.replace("http", "https")
+            #app.logger.info("url=" + url)
             image_carousel_template = ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
