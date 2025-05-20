@@ -54,12 +54,16 @@ from linebot.v3.webhooks import (
 import os
 #from linebot.models import *
 import requests
+import logging
+from functools import wraps
 import json
 app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 #======TestSetting==========
-#CHANAL_ACCESS_TOKEN = 'C+EEXYfa4rNMmrTRCnPYVZwH2P96JBBjcdLxt7AEcr9P70YfMjv08WkD4CSyNZFeMiBl9PR+Q89Jcjk1ygvAtKBIdcyg8bEXa8qZNENMf2942IEOwtzQOqYC7XPGJxYDbgFxCbP8zioGAcS4MH9jsgdB04t89/1O/w1cDnyilFU='
+#CHANNEL_ACCESS_TOKEN = 'C+EEXYfa4rNMmrTRCnPYVZwH2P96JBBjcdLxt7AEcr9P70YfMjv08WkD4CSyNZFeMiBl9PR+Q89Jcjk1ygvAtKBIdcyg8bEXa8qZNENMf2942IEOwtzQOqYC7XPGJxYDbgFxCbP8zioGAcS4MH9jsgdB04t89/1O/w1cDnyilFU='
 #CHANNEL_SECRET = '368027c375e4ee5435a7156aa38ee2d4'
-configuration = Configuration(access_token=os.getenv("CHANAL_ACCESS_TOKEN"))
+configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
 line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
 
@@ -72,20 +76,29 @@ line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
 @app.route("/liff-data", methods=["POST"])
 def liff_data():
+    """處理從 LIFF 發送的數據"""
     try:
         data = request.get_json()
-        id_token = data.get("idToken")
-        name = data.get("name")
-        user_Id = data.get("userId")
+        if not data:
+            return jsonify({"message": "無效的數據"}), 400
 
-        # 在終端機打印收到的資料
-        print(f"收到 LIFF 資料：ID Token={id_token}, Name={name}, User ID={user_Id}")
+        # 驗證必要字段
+        required_fields = ["idToken", "userId", "displayName"]
+        if not all(field in data for field in required_fields):
+            return jsonify({"message": "缺少必要字段"}), 400
 
-        # 回傳 JSON 回應
-        return jsonify({"message": f"LIFF 資料已收到：{name}"})
+        # 這裡應該驗證 ID Token (實際項目中建議實現)
+        # validate_id_token(data["idToken"])
+        
+        logger.info(f"收到 LIFF 數據 - 用戶: {data['displayName']}, ID: {data['userId']}")
+        
+        return jsonify({
+            "message": f"LIFF 數據已收到: {data['displayName']}",
+            "status": "success"
+        })
     except Exception as e:
-        print(f"接收 LIFF 資料失敗：{str(e)}")
-        return jsonify({"message": "接收失敗"}), 500
+        logger.error(f"處理 LIFF 數據錯誤: {str(e)}")
+        return jsonify({"message": "伺服器錯誤", "status": "error"}), 500
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
