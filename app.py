@@ -76,29 +76,42 @@ line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
 @app.route("/liff-data", methods=["POST"])
 def liff_data():
-    """處理從 LIFF 發送的數據"""
     try:
+        # 記錄收到的請求標頭和資料
+        logger.info(f"收到請求標頭: {request.headers}")
         data = request.get_json()
-        if not data:
-            return jsonify({"message": "無效的數據"}), 400
-
-        # 驗證必要字段
-        required_fields = ["idToken", "userId", "displayName"]
-        if not all(field in data for field in required_fields):
-            return jsonify({"message": "缺少必要字段"}), 400
-
-        # 這裡應該驗證 ID Token (實際項目中建議實現)
-        # validate_id_token(data["idToken"])
+        logger.info(f"收到的 JSON 資料: {data}")
         
-        logger.info(f"收到 LIFF 數據 - 用戶: {data['displayName']}, ID: {data['userId']}")
+        # 驗證必要欄位
+        if not data or 'lineUser' not in data:
+            logger.warning("缺少必要欄位")
+            return jsonify({
+                'status': 'error',
+                'message': '缺少必要欄位'
+            }), 400
         
-        return jsonify({
-            "message": f"LIFF 數據已收到: {data['displayName']}",
-            "status": "success"
-        })
+        # 在這裡處理您的業務邏輯...
+        
+        # 返回成功回應
+        response = {
+            'status': 'success',
+            'message': '資料已接收並處理',
+            'receivedData': {  # 可選：返回部分資料確認
+                'userId': data['lineUser']['profile']['userId'],
+                'params': data.get('urlParams', {})
+            }
+        }
+        
+        logger.info(f"返回回應: {response}")
+        return jsonify(response)
+        
     except Exception as e:
-        logger.error(f"處理 LIFF 數據錯誤: {str(e)}")
-        return jsonify({"message": "伺服器錯誤", "status": "error"}), 500
+        logger.error(f"處理資料時發生錯誤: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': '伺服器內部錯誤'
+        }), 500
+    
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
