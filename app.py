@@ -257,7 +257,7 @@ def handle_message(event):
                 columns=[
                     ImageCarouselColumn(
                         #image_url=url+'cat1.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat1.jpg'
+                        image_url='https://linebot-wpp0.onrender.com/static/cat1.jpg',
                         action=PostbackAction(
                             label='任務1',
                             data = 'task1'
@@ -265,7 +265,7 @@ def handle_message(event):
                     ),
                     ImageCarouselColumn(
                         #image_url=url+'cat2.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat2.jpg'
+                        image_url='https://linebot-wpp0.onrender.com/static/cat2.jpg',
                         action=PostbackAction(
                             label='任務2',
                             data = 'task2'
@@ -273,7 +273,7 @@ def handle_message(event):
                     ),
                     ImageCarouselColumn(
                         #image_url=url+'cat3.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat3.jpg'
+                        image_url='https://linebot-wpp0.onrender.com/static/cat3.jpg',
                         action=PostbackAction(
                             label='任務3',
                             data = 'task3'
@@ -281,7 +281,7 @@ def handle_message(event):
                     ),
                     ImageCarouselColumn(
                         #image_url=url+'cat4.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat4.jpg'
+                        image_url='https://linebot-wpp0.onrender.com/static/cat4.jpg',
                         action=PostbackAction(
                             label='任務4',
                             data = 'task4'
