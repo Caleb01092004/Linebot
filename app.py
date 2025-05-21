@@ -83,7 +83,7 @@ def liff_data():
         logger.info(f"收到的 JSON 資料: {data}")
         
         # 驗證必要欄位
-        if not data or 'lineUser' not in data:
+        if not data:
             logger.warning("缺少必要欄位")
             return jsonify({
                 'status': 'error',
