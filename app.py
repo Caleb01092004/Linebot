@@ -66,51 +66,63 @@ logger = logging.getLogger(__name__)
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
 line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
-
-#======RenderSetting==========
-# static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'temp')
-# # Channel Access Token
-# configuration = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
-# # Channel Secret
-# handler = WebhookHandler(os.getenv('CHANNEL_SECRET'))
-
 @app.route("/liff-data", methods=["POST"])
 def liff_data():
-    try:
-        # 記錄收到的請求標頭和資料
-        logger.info(f"收到請求標頭: {request.headers}")
-        data = request.get_json()
-        logger.info(f"收到的 JSON 資料: {data}")
+    data = request.get_json()
+    logger.info(f"收到的 JSON 資料: {data}")
+    
+    user_id = data.get("userId")
+    display_name = data.get("displayName")
+    url_params = data.get("urlParams", {})
+    universalId = data.get("universalId")
+    
+    if not user_id:
+        logger.warning("沒有 userId，資料格式不正確")
+        return jsonify({'status': 'error', 'message': '缺少 userId'}), 400
+
+    logger.info(f"來自 LIFF 的使用者 ID：{user_id}")
+    logger.info(f"使用者名稱：{display_name}")
+    logger.info(f"URL 參數：{url_params}")
+    logger.info(f"URL 參數：{universalId}")
+    
+    return jsonify({'status': 'success', 'message': '資料接收成功'})
+# @app.route("/liff-data", methods=["POST"])
+# def liff_data():
+#     try:
+#         # 記錄收到的請求標頭和資料
+#         logger.info(f"收到請求標頭: {request.headers}")
+#         data = request.get_json()
+#         logger.info(f"收到的 JSON 資料: {data}")
         
-        # 驗證必要欄位
-        if not data:
-            logger.warning("缺少必要欄位")
-            return jsonify({
-                'status': 'error',
-                'message': '缺少必要欄位'
-            }), 400
+#         # 驗證必要欄位
+#         if not data or 'lineUser' not in data:
+#             logger.warning("缺少必要欄位")
+#             return jsonify({
+#                 'status': 'error',
+#                 'message': '缺少必要欄位'
+#             }), 400
         
-        # 在這裡處理您的業務邏輯...
+#         # 在這裡處理您的業務邏輯...
         
-        # 返回成功回應
-        response = {
-            'status': 'success',
-            'message': '資料已接收並處理',
-            'receivedData': {  # 可選：返回部分資料確認
-                'userId': data['lineUser']['profile']['userId'],
-                'params': data.get('urlParams', {})
-            }
-        }
+#         # 返回成功回應
+#         response = {
+#             'status': 'success',
+#             'message': '資料已接收並處理',
+#             'receivedData': {  # 可選：返回部分資料確認
+#                 'userId': data['lineUser']['profile']['userId'],
+#                 'params': data.get('urlParams', {})
+#             }
+#         }
         
-        logger.info(f"返回回應: {response}")
-        return jsonify(response)
+#         logger.info(f"返回回應: {response}")
+#         return jsonify(response)
         
-    except Exception as e:
-        logger.error(f"處理資料時發生錯誤: {str(e)}")
-        return jsonify({
-            'status': 'error',
-            'message': '伺服器內部錯誤'
-        }), 500
+#     except Exception as e:
+#         logger.error(f"處理資料時發生錯誤: {str(e)}")
+#         return jsonify({
+#             'status': 'error',
+#             'message': '伺服器內部錯誤'
+#         }), 500
     
 @app.route("/callback", methods=['POST'])
 def callback():
