@@ -270,7 +270,7 @@ def handle_message(event):
                         #image_url=url+'cat1.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
                         action=PostbackAction(
-                            label='蓮花開～祝你有美好的一天',
+                            label='The Lotus blooms',
                             data = 'task1'
                         )
                     ),
@@ -278,7 +278,7 @@ def handle_message(event):
                         #image_url=url+'cat2.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
                         action=PostbackAction(
-                            label='Muu\（姆)',
+                            label='Muu（姆)',
                             data = 'task2'
                         )
                     ),
@@ -294,7 +294,7 @@ def handle_message(event):
                         #image_url=url+'cat4.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=PostbackAction(
-                            label='陌聲顯影機',
+                            label='The Echo Booth',
                             data = 'task4'
                         )
                     ),
