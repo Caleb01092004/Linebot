@@ -268,33 +268,33 @@ def handle_message(event):
                 columns=[
                     ImageCarouselColumn(
                         #image_url=url+'cat1.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat1.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
                         action=PostbackAction(
-                            label='《蓮花開～祝你有美好的一天》',
+                            label='蓮花開～祝你有美好的一天',
                             data = 'task1'
                         )
                     ),
                     ImageCarouselColumn(
                         #image_url=url+'cat2.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat2.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
                         action=PostbackAction(
-                            label='《Muu\（姆\)》',
+                            label='Muu\（姆)',
                             data = 'task2'
                         )
                     ),
                     ImageCarouselColumn(
                         #image_url=url+'cat3.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat3.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
                         action=PostbackAction(
-                            label='《Re:Style—性別視角下的造型共創》',
+                            label='Re:Style—性別視角下的造型共創',
                             data = 'task3'
                         )
                     ),
                     ImageCarouselColumn(
                         #image_url=url+'cat4.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat4.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=PostbackAction(
-                            label='《陌聲顯影機-The Echo Booth》',
+                            label='陌聲顯影機-The Echo Booth',
                             data = 'task4'
                         )
                     ),
