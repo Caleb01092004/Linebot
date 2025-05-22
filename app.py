@@ -286,7 +286,7 @@ def handle_message(event):
                         #image_url=url+'cat3.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
                         action=PostbackAction(
-                            label='Re:Style—性別視角下的造型共創',
+                            label='Re:Style',
                             data = 'task3'
                         )
                     ),
@@ -294,7 +294,7 @@ def handle_message(event):
                         #image_url=url+'cat4.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=PostbackAction(
-                            label='陌聲顯影機-The Echo Booth',
+                            label='陌聲顯影機',
                             data = 'task4'
                         )
                     ),
