@@ -310,56 +310,6 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
-        elif data == 'open_task_menu2':
-            #url = request.url_root + 'static/'
-            #url = url.replace("http", "https")
-            #app.logger.info("url=" + url)
-            image_carousel_template = ImageCarouselTemplate(
-                columns=[
-                    ImageCarouselColumn(
-                        #image_url=url+'cat1.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat1.jpg',
-                        action=PostbackAction(
-                            label='任務1',
-                            data = 'task1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        #image_url=url+'cat2.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat2.jpg',
-                        action=PostbackAction(
-                            label='任務2',
-                            data = 'task2'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        #image_url=url+'cat3.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat3.jpg',
-                        action=PostbackAction(
-                            label='任務3',
-                            data = 'task3'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        #image_url=url+'cat4.jpg',
-                        image_url='https://linebot-wpp0.onrender.com/static/cat4.jpg',
-                        action=PostbackAction(
-                            label='任務4',
-                            data = 'task4'
-                        )
-                    ),
-                ]
-            )
-            image_carousel_message = TemplateMessage(
-                alt_text='圖片輪播範本',
-                template=image_carousel_template
-            )
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[image_carousel_message]
-                )
-            )
         elif data == 'task1':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
@@ -386,6 +336,13 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='這是任務4的詳細說明')]
+                )
+            )
+        else:
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='這是其他的回覆')]
                 )
             )
 create_rich_menu_1()  
