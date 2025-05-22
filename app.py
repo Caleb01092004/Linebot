@@ -270,7 +270,7 @@ def handle_message(event):
                         #image_url=url+'cat1.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
                         action=PostbackAction(
-                            label='The Lotus blooms',
+                            label='TheLotusblooms',
                             data = 'task1'
                         )
                     ),
@@ -294,7 +294,7 @@ def handle_message(event):
                         #image_url=url+'cat4.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=PostbackAction(
-                            label='The Echo Booth',
+                            label='TheEchoBooth',
                             data = 'task4'
                         )
                     ),
