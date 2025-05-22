@@ -225,62 +225,56 @@ def handle_message(event):
                 )
             )
         elif text == "HELP":
-           quickReply = QuickReply(
+            postback_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            message_icon = 'https://linebot-wpp0.onrender.com/static/t2.png'
+            datetime_icon = 'https://linebot-wpp0.onrender.com/static/t3.png'
+            date_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            time_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            quickReply = QuickReply(
                 items=[
                     QuickReplyItem(
                         action=PostbackAction(
-                            label="Postback",
-                            data="postback",
-                            display_text="postback"
+                            label="創作理念",
+                            data="Core",
+                            display_text="Core"
                         ),
                         image_url=postback_icon
                     ),
                     QuickReplyItem(
-                        action=MessageAction(
-                            label="Message",
-                            text="message"
+                        action=PostbackAction(
+                            label="主線任務",
+                            data="MainTask",
+                            display_text="Main"
                         ),
                         image_url=message_icon
                     ),
                     QuickReplyItem(
-                        action=DatetimePickerAction(
-                            label="Date",
-                            data="date",
-                            mode="date"
+                       action=PostbackAction(
+                            label="支線任務",
+                            data="SubTask",
+                            display_text="Sub"
                         ),
                         image_url=date_icon
                     ),
                     QuickReplyItem(
-                        action=DatetimePickerAction(
-                            label="Time",
-                            data="time",
-                            mode="time"
+                        action=PostbackAction(
+                            label="地圖",
+                            data="Map",
+                            display_text="Map"
                         ),
                         image_url=time_icon
                     ),
                     QuickReplyItem(
-                        action=DatetimePickerAction(
-                            label="Datetime",
-                            data="datetime",
-                            mode="datetime",
-                            initial="2024-01-01T00:00",
-                            max="2025-01-01T00:00",
-                            min="2023-01-01T00:00"
+                       action=PostbackAction(
+                            label="聯絡我們",
+                            data="Contact",
+                            display_text="Contact"
                         ),
                         image_url=datetime_icon
                     ),
-                    QuickReplyItem(
-                        action=CameraAction(label="Camera")
-                    ),
-                    QuickReplyItem(
-                        action=CameraRollAction(label="Camera Roll")
-                    ),
-                    QuickReplyItem(
-                        action=LocationAction(label="Location")
-                    )
                 ]
             )
-           line_bot_api.reply_message(
+            line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(
@@ -377,6 +371,50 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='這是任務4的詳細說明')]
+                )
+            )
+        else:
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='這是其他的回覆')]
+                )
+            )
+        postback_data = event.postback.data
+        if postback_data == 'core':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='創作理念說明')]
+                )
+            )
+        elif postback_data == 'MainTask':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='主線任務說明')]
+                )
+            )
+        elif postback_data == 'SubTask':
+            time = event.postback.params['time']
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='支線任務說明')]
+                )
+            )
+        elif postback_data == 'Map':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='地圖詳細說明')]
+                )
+            )
+        elif postback_data == 'Contact':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='這是聯絡方式')]
                 )
             )
         else:
