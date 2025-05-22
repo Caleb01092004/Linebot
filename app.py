@@ -36,6 +36,9 @@ from linebot.v3.messaging import (
     CarouselColumn,
     ImageCarouselTemplate,
     ImageCarouselColumn,
+    #QuickReply
+    QuickReply,
+    QuickReplyItem,
     #Action
     MessageAction,
     URIAction,
@@ -204,30 +207,6 @@ def handle_message(event):
                     messages=[StickerMessage(package_id="6136", sticker_id="10551378")] 
                 )
             )
-        elif text == "提示":#輸出音訊檔案
-            url = request.url_root + "static/Mozart1.mp3"
-            url = url.replace("http", "https")
-            app.logger.info("url=",url)
-            duration = 60000 #in milliseconds
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[
-                        AudioMessage(original_content_url=url,duration=duration)
-                    ]
-                )
-            )
-        elif text == '圖片':
-            url = 'https://linebot-wpp0.onrender.com/static/Lotus.jpg'
-            app.logger.info("url=" + url)
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[
-                        ImageMessage(original_content_url=url, preview_image_url=url)
-                    ]
-                )
-            )
         elif text == "ID":
             try:
                 response = requests.post(
@@ -245,13 +224,78 @@ def handle_message(event):
                     messages=[TextMessage(text="我愛你")]
                 )
             )
+        elif text == "HELP":
+           quickReply = QuickReply(
+                items=[
+                    QuickReplyItem(
+                        action=PostbackAction(
+                            label="Postback",
+                            data="postback",
+                            display_text="postback"
+                        ),
+                        image_url=postback_icon
+                    ),
+                    QuickReplyItem(
+                        action=MessageAction(
+                            label="Message",
+                            text="message"
+                        ),
+                        image_url=message_icon
+                    ),
+                    QuickReplyItem(
+                        action=DatetimePickerAction(
+                            label="Date",
+                            data="date",
+                            mode="date"
+                        ),
+                        image_url=date_icon
+                    ),
+                    QuickReplyItem(
+                        action=DatetimePickerAction(
+                            label="Time",
+                            data="time",
+                            mode="time"
+                        ),
+                        image_url=time_icon
+                    ),
+                    QuickReplyItem(
+                        action=DatetimePickerAction(
+                            label="Datetime",
+                            data="datetime",
+                            mode="datetime",
+                            initial="2024-01-01T00:00",
+                            max="2025-01-01T00:00",
+                            min="2023-01-01T00:00"
+                        ),
+                        image_url=datetime_icon
+                    ),
+                    QuickReplyItem(
+                        action=CameraAction(label="Camera")
+                    ),
+                    QuickReplyItem(
+                        action=CameraRollAction(label="Camera Roll")
+                    ),
+                    QuickReplyItem(
+                        action=LocationAction(label="Location")
+                    )
+                ]
+            )
+           line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(
+                        text='請選擇項目',
+                        quick_reply=quickReply
+                    )]
+                )
+            )
         else:
         #reply_message
         #line_bot_api.reply_message
             result = line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n如果對於任務有任何問題請在聊天室輸入\"HINT\"\n有其他意見歡迎私訊我們的IG粉專:You_as_a_unit\n或是點擊下方連結\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\n")]
+                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n在聊天室輸入\"HELP\"了解更多\n對於這次的展覽有任何想法或疑惑都歡迎私訊我們的IG粉專:You_as_a_unit\n點擊下方連結快速加入\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\n")]
             )
         )
     #https://digital-art-frontend.onrender.com/muu
@@ -261,9 +305,6 @@ def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         if data == 'open_task_menu1':
-            #url = request.url_root + 'static/'
-            #url = url.replace("http", "https")
-            #app.logger.info("url=" + url)
             image_carousel_template = ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
