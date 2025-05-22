@@ -86,43 +86,6 @@ def liff_data():
     logger.info(f"URL 參數：{universalId}")
     
     return jsonify({'status': 'success', 'message': '資料接收成功'})
-# @app.route("/liff-data", methods=["POST"])
-# def liff_data():
-#     try:
-#         # 記錄收到的請求標頭和資料
-#         logger.info(f"收到請求標頭: {request.headers}")
-#         data = request.get_json()
-#         logger.info(f"收到的 JSON 資料: {data}")
-        
-#         # 驗證必要欄位
-#         if not data or 'lineUser' not in data:
-#             logger.warning("缺少必要欄位")
-#             return jsonify({
-#                 'status': 'error',
-#                 'message': '缺少必要欄位'
-#             }), 400
-        
-#         # 在這裡處理您的業務邏輯...
-        
-#         # 返回成功回應
-#         response = {
-#             'status': 'success',
-#             'message': '資料已接收並處理',
-#             'receivedData': {  # 可選：返回部分資料確認
-#                 'userId': data['lineUser']['profile']['userId'],
-#                 'params': data.get('urlParams', {})
-#             }
-#         }
-        
-#         logger.info(f"返回回應: {response}")
-#         return jsonify(response)
-        
-#     except Exception as e:
-#         logger.error(f"處理資料時發生錯誤: {str(e)}")
-#         return jsonify({
-#             'status': 'error',
-#             'message': '伺服器內部錯誤'
-#         }), 500
     
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -278,7 +241,7 @@ def handle_message(event):
             result = line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages=[TextMessage(text="回你了喔")]
+                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n如果對於任務有任何問題請在聊天室輸入\"HINT\"\n有其他意見歡迎私訊我們的IG粉專:You_as_a_unit\n或是點擊下方連結\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\n")]
             )
         )
     #https://digital-art-frontend.onrender.com/muu
