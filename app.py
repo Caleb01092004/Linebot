@@ -217,6 +217,17 @@ def handle_message(event):
                     ]
                 )
             )
+        elif text == '圖片':
+            url = 'https://linebot-wpp0.onrender.com/static/Lotus.png'
+            app.logger.info("url=" + url)
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[
+                        ImageMessage(original_content_url=url, preview_image_url=url)
+                    ]
+                )
+            )
         elif text == "ID":
             try:
                 response = requests.post(
