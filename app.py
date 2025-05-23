@@ -115,8 +115,8 @@ def create_rich_menu_1():
                 bounds=RichMenuBounds(#地圖
                     x=0,
                     y=0,
-                    width=1669,
-                    height=1686
+                    width=1575,
+                    height=836
                 ),
                 action=URIAction(
                     label='開啟網站',
@@ -126,8 +126,20 @@ def create_rich_menu_1():
             RichMenuArea(
                 bounds=RichMenuBounds(#主線任務
                     x=1672,
+                    y=840,
+                    width=1575,
+                    height=836
+                ),
+                action=PostbackAction(
+                    label='HELP',
+                    data='open_task_menu1'
+                )
+            ),
+             RichMenuArea(
+                bounds=RichMenuBounds(#主線任務
+                    x=1579,
                     y=0,
-                    width=828,
+                    width=921,
                     height=836
                 ),
                 action=PostbackAction(
@@ -137,10 +149,10 @@ def create_rich_menu_1():
             ),
             RichMenuArea(
                 bounds=RichMenuBounds(#支線任務
-                    x=1672,
-                    y=838,
-                    width=828,
-                    height=848
+                    x=1579,
+                    y=840,
+                    width=921,
+                    height=846
                 ),
                 action=PostbackAction(
                     label='開啟網站',
@@ -342,6 +354,65 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[image_carousel_message]
+                )
+            )
+        elif data == 'help':
+            postback_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            message_icon = 'https://linebot-wpp0.onrender.com/static/t2.png'
+            datetime_icon = 'https://linebot-wpp0.onrender.com/static/t3.png'
+            date_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            time_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            quickReply = QuickReply(
+                items=[
+                    QuickReplyItem(
+                        action=PostbackAction(
+                            label="創作理念",
+                            data="Core",
+                            display_text="Core"
+                        ),
+                        image_url=postback_icon
+                    ),
+                    QuickReplyItem(
+                        action=PostbackAction(
+                            label="主線任務",
+                            data="MainTask",
+                            display_text="Main"
+                        ),
+                        image_url=message_icon
+                    ),
+                    QuickReplyItem(
+                       action=PostbackAction(
+                            label="支線任務",
+                            data="SubTask",
+                            display_text="Sub"
+                        ),
+                        image_url=date_icon
+                    ),
+                    QuickReplyItem(
+                        action=PostbackAction(
+                            label="地圖",
+                            data="Map",
+                            display_text="Map"
+                        ),
+                        image_url=time_icon
+                    ),
+                    QuickReplyItem(
+                       action=PostbackAction(
+                            label="聯絡我們",
+                            data="Contact",
+                            display_text="Contact"
+                        ),
+                        image_url=datetime_icon
+                    ),
+                ]
+            )
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(
+                        text='請選擇項目',
+                        quick_reply=quickReply
+                    )]
                 )
             )
         elif data == 'task1':
