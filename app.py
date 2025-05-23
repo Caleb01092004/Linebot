@@ -247,7 +247,7 @@ def handle_message(event):
                         action=PostbackAction(
                             label="創作理念",
                             data="Core",
-                            display_text="Core"
+                            display_text="關於創作理念"
                         ),
                         image_url=postback_icon
                     ),
@@ -255,7 +255,7 @@ def handle_message(event):
                         action=PostbackAction(
                             label="主線任務",
                             data="MainTask",
-                            display_text="Main"
+                            display_text="關於主線任務"
                         ),
                         image_url=message_icon
                     ),
@@ -263,7 +263,7 @@ def handle_message(event):
                        action=PostbackAction(
                             label="支線任務",
                             data="SubTask",
-                            display_text="Sub"
+                            display_text="關於支線任務"
                         ),
                         image_url=date_icon
                     ),
@@ -271,7 +271,7 @@ def handle_message(event):
                         action=PostbackAction(
                             label="地圖",
                             data="Map",
-                            display_text="Map"
+                            display_text="關於地圖"
                         ),
                         image_url=time_icon
                     ),
@@ -279,7 +279,7 @@ def handle_message(event):
                        action=PostbackAction(
                             label="聯絡我們",
                             data="Contact",
-                            display_text="Contact"
+                            display_text="聯絡資訊"
                         ),
                         image_url=datetime_icon
                     ),
@@ -300,7 +300,7 @@ def handle_message(event):
             result = line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n在聊天室輸入\"HELP\"了解更多\n對於這次的展覽有任何想法或疑惑都歡迎私訊我們的IG粉專:You_as_a_unit\n點擊下方連結快速加入\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\n")]
+                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n點擊選單HELP或在聊天室輸入\"HELP\"了解更多\n對於這次的展覽有任何想法或疑惑都歡迎私訊我們的IG粉專:You_as_a_unit\n點擊下方連結快速加入\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==\n")]
             )
         )
     #https://digital-art-frontend.onrender.com/muu
@@ -392,7 +392,7 @@ def handle_message(event):
                 )
             )
         postback_data = event.postback.data
-        if postback_data == 'core':
+        if postback_data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
