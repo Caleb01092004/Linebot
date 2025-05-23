@@ -385,7 +385,7 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(
-                        text='這不只是任務地圖，而是一場探索，也是一場迷路。有時候，我們不是為了找到什麼，而是為了看見那些從沒注意過的角落—— 一張你沒拍過的照片、一本沒人借過的書，甚至是一頭你從沒見過的牛。')]
+                        text='創作理念說明\n這是創作理念的詳細說明')]
                 )
             )
         elif data == 'MainTask':
@@ -406,7 +406,8 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='地圖詳細說明')]
+                    messages=[TextMessage(
+                        text='這不只是任務地圖，而是一場探索，也是一場迷路。有時候，我們不是為了找到什麼，而是為了看見那些從沒注意過的角落—— 一張你沒拍過的照片、一本沒人借過的書，甚至是一頭你從沒見過的牛。')]
                 )
             )
         elif data == 'Contact':
