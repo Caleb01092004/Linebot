@@ -130,9 +130,9 @@ def create_rich_menu_1():
                     width=1575,
                     height=836
                 ),
-                action=PostbackAction(
+                action=MessageAction(
                     label='HELP',
-                    data='open_task_menu1'
+                    text = 'HELP'
                 )
             ),
              RichMenuArea(
@@ -354,60 +354,6 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[image_carousel_message]
-                )
-            )
-        elif data == 'help':
-            postback_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
-            message_icon = 'https://linebot-wpp0.onrender.com/static/t2.png'
-            datetime_icon = 'https://linebot-wpp0.onrender.com/static/t3.png'
-            date_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
-            time_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
-            quickReply = QuickReply(
-                items=[
-                    QuickReplyItem(
-                        action=PostbackAction(
-                            label="創作理念",
-                            data="Core"
-                        ),
-                        image_url=postback_icon
-                    ),
-                    QuickReplyItem(
-                        action=PostbackAction(
-                            label="主線任務",
-                            data="MainTask"
-                        ),
-                        image_url=message_icon
-                    ),
-                    QuickReplyItem(
-                       action=PostbackAction(
-                            label="支線任務",
-                            data="SubTask"
-                        ),
-                        image_url=date_icon
-                    ),
-                    QuickReplyItem(
-                        action=PostbackAction(
-                            label="地圖",
-                            data="Map"
-                        ),
-                        image_url=time_icon
-                    ),
-                    QuickReplyItem(
-                       action=PostbackAction(
-                            label="聯絡我們",
-                            data="Contact"
-                        ),
-                        image_url=datetime_icon
-                    ),
-                ]
-            )
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(
-                        text='請選擇項目',
-                        quick_reply=quickReply
-                    )]
                 )
             )
         elif data == 'task1':
