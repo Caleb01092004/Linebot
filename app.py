@@ -419,7 +419,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是其他的回覆')]
+                    messages=[TextMessage(text='無效的選項')]
                 )
             )
 create_rich_menu_1()  
