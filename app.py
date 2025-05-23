@@ -367,40 +367,35 @@ def handle_message(event):
                     QuickReplyItem(
                         action=PostbackAction(
                             label="創作理念",
-                            data="Core",
-                            display_text="Core"
+                            data="Core"
                         ),
                         image_url=postback_icon
                     ),
                     QuickReplyItem(
                         action=PostbackAction(
                             label="主線任務",
-                            data="MainTask",
-                            display_text="Main"
+                            data="MainTask"
                         ),
                         image_url=message_icon
                     ),
                     QuickReplyItem(
                        action=PostbackAction(
                             label="支線任務",
-                            data="SubTask",
-                            display_text="Sub"
+                            data="SubTask"
                         ),
                         image_url=date_icon
                     ),
                     QuickReplyItem(
                         action=PostbackAction(
                             label="地圖",
-                            data="Map",
-                            display_text="Map"
+                            data="Map"
                         ),
                         image_url=time_icon
                     ),
                     QuickReplyItem(
                        action=PostbackAction(
                             label="聯絡我們",
-                            data="Contact",
-                            display_text="Contact"
+                            data="Contact"
                         ),
                         image_url=datetime_icon
                     ),
