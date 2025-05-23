@@ -307,14 +307,12 @@ def handle_message(event):
 @line_handler.add(PostbackEvent)
 def handle_message(event):
     data = event.postback.data
-    postback_data = event.postback.data
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         if data == 'open_task_menu1':
             image_carousel_template = ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        #image_url=url+'cat1.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
                         action=PostbackAction(
                             label='TouchToOpen',
@@ -322,7 +320,6 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        #image_url=url+'cat2.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
                         action=PostbackAction(
                             label='TouchToOpen',
@@ -330,7 +327,6 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        #image_url=url+'cat3.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
                         action=PostbackAction(
                             label='TouchToOpen',
@@ -338,7 +334,6 @@ def handle_message(event):
                         )
                     ),
                     ImageCarouselColumn(
-                        #image_url=url+'cat4.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=PostbackAction(
                             label='TouchToOpen',
@@ -385,42 +380,35 @@ def handle_message(event):
                     messages=[TextMessage(text='這是任務4的詳細說明')]
                 )
             )
-        else:
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是其他的回覆')]
-                )
-            )
-        if postback_data == 'Core':
+        elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='創作理念說明')]
                 )
             )
-        elif postback_data == 'MainTask':
+        elif data == 'MainTask':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='主線任務說明')]
                 )
             )
-        elif postback_data == 'SubTask':
+        elif data == 'SubTask':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='支線任務說明')]
                 )
             )
-        elif postback_data == 'Map':
+        elif data == 'Map':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='地圖詳細說明')]
                 )
             )
-        elif postback_data == 'Contact':
+        elif data == 'Contact':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
