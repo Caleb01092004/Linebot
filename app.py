@@ -385,21 +385,21 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(
-                        text='創作理念說明\n這是創作理念的詳細說明')]
+                        text='敬請期待')]
                 )
             )
         elif data == 'MainTask':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='主線任務說明')]
+                    messages=[TextMessage(text='快點起身，參與所有的展品吧!')]
                 )
             )
         elif data == 'SubTask':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='支線任務說明')]
+                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，快去做!')]
                 )
             )
         elif data == 'Map':
