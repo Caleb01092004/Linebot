@@ -115,8 +115,8 @@ def create_rich_menu_1():
                 bounds=RichMenuBounds(#地圖
                     x=0,
                     y=0,
-                    width=1575,
-                    height=836
+                    width=1671,
+                    height=1686
                 ),
                 action=URIAction(
                     label='開啟網站',
@@ -125,22 +125,22 @@ def create_rich_menu_1():
             ),
             RichMenuArea(
                 bounds=RichMenuBounds(#主線任務
-                    x=1672,
-                    y=840,
-                    width=1575,
-                    height=836
+                    x=1673,
+                    y=0,
+                    width=827,
+                    height=852
                 ),
-                action=MessageAction(
-                    label='HELP',
-                    text = 'HELP'
+                action=PostbackAction(
+                    label='打開圖片選單',
+                    data = 'open_task_menu1'
                 )
             ),
              RichMenuArea(
                 bounds=RichMenuBounds(#主線任務
-                    x=1579,
-                    y=0,
-                    width=921,
-                    height=836
+                    x=1699,
+                    y=844,
+                    width=831,
+                    height=668
                 ),
                 action=PostbackAction(
                     label='打開圖片選單',
@@ -149,14 +149,14 @@ def create_rich_menu_1():
             ),
             RichMenuArea(
                 bounds=RichMenuBounds(#支線任務
-                    x=1579,
-                    y=840,
-                    width=921,
-                    height=846
+                    x=1672,
+                    y=1508,
+                    width=828,
+                    height=178
                 ),
-                action=PostbackAction(
-                    label='開啟網站',
-                    data='open_task_menu2'
+                action=MessageAction(
+                    label='HLEP',
+                    text='HELP'
                 )
             )
         ]
