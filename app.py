@@ -307,6 +307,7 @@ def handle_message(event):
 @line_handler.add(PostbackEvent)
 def handle_message(event):
     data = event.postback.data
+    postback_data = event.postback.data
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         if data == 'open_task_menu1':
@@ -391,7 +392,6 @@ def handle_message(event):
                     messages=[TextMessage(text='這是其他的回覆')]
                 )
             )
-        postback_data = event.postback.data
         if postback_data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
