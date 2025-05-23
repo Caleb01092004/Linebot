@@ -246,7 +246,7 @@ def handle_message(event):
                     QuickReplyItem(
                         action=PostbackAction(
                             label="創作理念",
-                            data="Core",
+                            data='Core',
                             display_text="關於創作理念"
                         ),
                         image_url=postback_icon
@@ -254,7 +254,7 @@ def handle_message(event):
                     QuickReplyItem(
                         action=PostbackAction(
                             label="主線任務",
-                            data="MainTask",
+                            data='MainTask',
                             display_text="關於主線任務"
                         ),
                         image_url=message_icon
@@ -262,7 +262,7 @@ def handle_message(event):
                     QuickReplyItem(
                        action=PostbackAction(
                             label="支線任務",
-                            data="SubTask",
+                            data='SubTask',
                             display_text="關於支線任務"
                         ),
                         image_url=date_icon
@@ -270,7 +270,7 @@ def handle_message(event):
                     QuickReplyItem(
                         action=PostbackAction(
                             label="地圖",
-                            data="Map",
+                            data='Map',
                             display_text="關於地圖"
                         ),
                         image_url=time_icon
@@ -278,7 +278,7 @@ def handle_message(event):
                     QuickReplyItem(
                        action=PostbackAction(
                             label="聯絡我們",
-                            data="Contact",
+                            data='Contact',
                             display_text="聯絡資訊"
                         ),
                         image_url=datetime_icon
