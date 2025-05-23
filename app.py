@@ -203,7 +203,6 @@ def handle_message(event):
             line_bot_api.reply_message_with_http_info(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    #messages=[TextMessage(text="我愛你")]
                     messages=[StickerMessage(package_id="6136", sticker_id="10551378")] 
                 )
             )
@@ -305,7 +304,7 @@ def handle_message(event):
                         #image_url=url+'cat1.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
                         action=PostbackAction(
-                            label='Lotusblooms',
+                            label='TouchToOpen',
                             data = 'task1'
                         )
                     ),
@@ -313,7 +312,7 @@ def handle_message(event):
                         #image_url=url+'cat2.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
                         action=PostbackAction(
-                            label='Muu（姆)',
+                            label='TouchToOpen',
                             data = 'task2'
                         )
                     ),
@@ -321,7 +320,7 @@ def handle_message(event):
                         #image_url=url+'cat3.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
                         action=PostbackAction(
-                            label='Re:Style',
+                            label='TouchToOpen',
                             data = 'task3'
                         )
                     ),
@@ -329,7 +328,7 @@ def handle_message(event):
                         #image_url=url+'cat4.jpg',
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=PostbackAction(
-                            label='EchoBooth',
+                            label='TouchToOpen',
                             data = 'task4'
                         )
                     ),
@@ -396,7 +395,6 @@ def handle_message(event):
                 )
             )
         elif postback_data == 'SubTask':
-            time = event.postback.params['time']
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
