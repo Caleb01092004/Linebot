@@ -214,7 +214,15 @@ def handle_message(event):
                 )
             )
         elif text == "ID":
-             sendDataTobackend(user_id)
+            try:
+                response = requests.post(
+                    "https://digital-art-backend-nq89.onrender.com/api/user/add",
+                    json={"user_id": user_id}
+                )
+                response.raise_for_status()
+                backend_reply = "後端已成功記錄你的使用者資訊！"
+            except Exception as e:
+                backend_reply = f"記錄時發生錯誤：{str(e)}"
         elif text == "link1":
              line_bot_api.reply_message_with_http_info(
                 ReplyMessageRequest(
