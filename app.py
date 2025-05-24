@@ -197,7 +197,15 @@ def handle_follow(event):
                 messages=[TextMessage(text="執子之手\n方知子醜")]
             )
         )
-    sendDataTobackend(user_id)
+    try:
+        response = requests.post(
+            "https://digital-art-backend-nq89.onrender.com/api/user/add",
+            json={"user_id": user_id}
+        )
+        response.raise_for_status()
+        backend_reply = "後端已成功記錄你的使用者資訊！"
+    except Exception as e:
+        backend_reply = f"記錄時發生錯誤：{str(e)}"
 @line_handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     if event.source.type != 'user':
@@ -352,6 +360,15 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
+            try:
+                response = requests.post(
+                    "https://digital-art-backend-nq89.onrender.com/api/user/add",
+                    json={"user_id": user_id}
+                )
+                response.raise_for_status()
+                backend_reply = "後端已成功記錄你的使用者資訊！"
+            except Exception as e:
+                backend_reply = f"記錄時發生錯誤：{str(e)}"
         elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
