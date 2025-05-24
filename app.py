@@ -62,12 +62,18 @@ import json
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-#======TestSetting==========
-#CHANNEL_ACCESS_TOKEN = 'C+EEXYfa4rNMmrTRCnPYVZwH2P96JBBjcdLxt7AEcr9P70YfMjv08WkD4CSyNZFeMiBl9PR+Q89Jcjk1ygvAtKBIdcyg8bEXa8qZNENMf2942IEOwtzQOqYC7XPGJxYDbgFxCbP8zioGAcS4MH9jsgdB04t89/1O/w1cDnyilFU='
-#CHANNEL_SECRET = '368027c375e4ee5435a7156aa38ee2d4'
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
 line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
-
+def sendDataTobackend(user_id):
+    try:
+        response = requests.post(
+            "https://digital-art-backend-nq89.onrender.com/api/user/add",
+            json={"user_id": user_id}
+        )
+        response.raise_for_status()
+        return True, "後端已成功記錄你的使用者資訊！"
+    except Exception as e:
+        return False, f"記錄時發生錯誤：{str(e)}"
 @app.route("/liff-data", methods=["POST"])
 def liff_data():
     data = request.get_json()
@@ -192,16 +198,6 @@ def handle_follow(event):
                 messages=[TextMessage(text="執子之手\n方知子醜")]
             )
         )
-    # try:
-    #     response = requests.post(
-    #     "https://digital-art-backend-nq89.onrender.com/api/user/add",
-    #     json={"user_id": user_id}
-    #     )
-    #     response.raise_for_status()
-    #     backend_reply = "後端已成功記錄你的使用者資訊！"
-    # except Exception as e:
-    #     backend_reply = f"記錄時發生錯誤：{str(e)}"
-
 @line_handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     if event.source.type != 'user':
@@ -218,15 +214,7 @@ def handle_message(event):
                 )
             )
         elif text == "ID":
-            try:
-                response = requests.post(
-                    "https://digital-art-backend-nq89.onrender.com/api/user/add",
-                    json={"user_id": user_id}
-                )
-                response.raise_for_status()
-                backend_reply = "後端已成功記錄你的使用者資訊！"
-            except Exception as e:
-                backend_reply = f"記錄時發生錯誤：{str(e)}"
+             sendDataTobackend(user_id)
         elif text == "link1":
              line_bot_api.reply_message_with_http_info(
                 ReplyMessageRequest(
@@ -306,9 +294,11 @@ def handle_message(event):
 @line_handler.add(PostbackEvent)
 def handle_message(event):
     data = event.postback.data
+    user_id = event.source.user_id
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         if data == 'open_task_menu1':
+            sendDataTobackend(user_id)
             image_carousel_template = ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
