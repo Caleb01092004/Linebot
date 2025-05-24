@@ -67,7 +67,8 @@ line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 def sendDataTobackend(user_id):
     try:
         response = requests.post(
-            "https://digital-art-backend-nq89.onrender.com/api/user/add",
+            "https://linebot-wpp0.onrender.com/api/user/add",
+            #"https://digital-art-backend-nq89.onrender.com/api/user/add",
             json={"user_id": user_id}
         )
         response.raise_for_status()
@@ -339,6 +340,36 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[image_carousel_message]
+                )
+            )
+        elif data == 'Core':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(
+                        text='敬請期待')]
+                )
+            )
+        elif data == 'MainTask':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='快點起身，參與所有的展品吧!')]
+                )
+            )
+        elif data == 'SubTask':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，快去做!')]
+                )
+            )
+        elif data == 'Map':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(
+                        text='這不只是任務地圖，而是一場探索，也是一場迷路。有時候，我們不是為了找到什麼，而是為了看見那些從沒注意過的角落—— 一張你沒拍過的照片、一本沒人借過的書，甚至是一頭你從沒見過的牛。')]
                 )
             )
         elif data == 'Core':
