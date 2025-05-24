@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,14 +58,6 @@
         }
     </style>
     <script>
-        // 後端服務端點配置
-        const BACKEND_ENDPOINTS = {
-            echo: 'https://digital-art-frontend.onrender.com/echo',
-            gender: 'https://digital-art-frontend.onrender.com/gender',
-            lotus: 'https://digital-art-frontend.onrender.com/lotus',
-            muu: 'https://digital-art-frontend.onrender.com/muu'
-        };
-
         async function initLiff() {
             try {
                 // 初始化 LIFF
@@ -115,27 +106,8 @@
                     document.getElementById("deviceInfo").textContent = 
                         `語言: ${liff.getLanguage()} | 系統: ${liff.getOS()}`;
                     
-                    // 根據當前路徑選擇對應的後端服務
-                    const pathname = window.location.pathname;
-                    let endpoint = null;
-
-                    if (pathname.includes("/echo")) {
-                        endpoint = BACKEND_ENDPOINTS.echo;
-                    } else if (pathname.includes("/gender")) {
-                        endpoint = BACKEND_ENDPOINTS.gender;
-                    } else if (pathname.includes("/lotus")) {
-                        endpoint = BACKEND_ENDPOINTS.lotus;
-                    } else if (pathname.includes("/muu")) {
-                        endpoint = BACKEND_ENDPOINTS.muu;
-                    }
-
-                    // 如果有匹配的端點，發送資料到後端
-                    if (endpoint) {
-                        await callBackendAPI(endpoint, data);
-                    } else {
-                        document.getElementById("statusMessage").className = "status-message status-error";
-                        document.getElementById("statusMessage").textContent = "未指定後端服務";
-                    }
+                    // 發送資料到後端
+                    await sendDataToBackend(data);
                     
                     // 添加功能按鈕
                     if (liff.isInClient()) {
@@ -154,19 +126,17 @@
             }
         }
 
-        async function callBackendAPI(endpoint, data) {
+        async function sendDataToBackend(data) {
             const statusElement = document.getElementById("statusMessage");
             
             try {
                 statusElement.className = "status-message";
                 statusElement.textContent = '正在發送資料到後端...';
+                const pathname = window.location.pathname;
 
-                const response = await fetch(endpoint, {
+                const response = await fetch("https://linebot-wpp0.onrender.com/liff-data", {
                     method: "POST",
-                    headers: { 
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${data.idToken}`
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
                 });
                 
@@ -179,11 +149,6 @@
                 
                 statusElement.className = "status-message status-success";
                 statusElement.textContent = '資料傳輸成功！';
-                
-                // 顯示後端返回的數據
-                const resultDisplay = document.createElement("div");
-                resultDisplay.innerHTML = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
-                statusElement.appendChild(resultDisplay);
                 
                 return result;
             } catch (err) {

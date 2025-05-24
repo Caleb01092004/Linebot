@@ -55,7 +55,6 @@ from linebot.v3.webhooks import (
     TextMessageContent
 )
 import os
-#from linebot.models import *
 import requests
 import logging
 from functools import wraps
