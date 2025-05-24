@@ -314,9 +314,9 @@ def handle_message(event):
                 columns=[
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
-                        action=PostbackAction(
+                        action=URIAction(
                             label='TouchToOpen',
-                            data = 'task1'
+                            uri='https://www.google.com'
                         )
                     ),
                     ImageCarouselColumn(
