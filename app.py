@@ -306,7 +306,6 @@ def handle_message(event):
                         action=URIAction(
                             label='TouchToOpen',
                             uri='https://digital-art-frontend.onrender.com/lotus'
-                            #uri='https://liff.line.me/2007392080-pdLXAx9L/lotus'
                         )
                     ),
                     ImageCarouselColumn(
@@ -314,7 +313,6 @@ def handle_message(event):
                         action=URIAction(
                             label='TouchToOpen',
                             uri='https://digital-art-frontend.onrender.com/muu'
-                            #uri='https://liff.line.me/2007392080-pdLXAx9L/muu'
                         )
                     ),
                     ImageCarouselColumn(
@@ -322,7 +320,6 @@ def handle_message(event):
                         action=URIAction(
                             label='TouchToOpen',
                             uri='https://digital-art-frontend.onrender.com/gender'
-                            #uri='https://liff.line.me/2007392080-pdLXAx9L/gender'
                         )
                     ),
                     ImageCarouselColumn(
