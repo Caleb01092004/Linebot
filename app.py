@@ -342,6 +342,7 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
+            sendDataTobackend(user_id)
         elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
