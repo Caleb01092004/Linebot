@@ -316,28 +316,28 @@ def handle_message(event):
                         image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri='https://www.google.com'
+                            uri='https://liff.line.me/2007392080-pdLXAx9L/lotus'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri='https://www.google.com'
+                            uri='https://liff.line.me/2007392080-pdLXAx9L/muu'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri='https://www.google.com'
+                            uri='https://liff.line.me/2007392080-pdLXAx9L/gender'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri='https://www.google.com'
+                            uri='https://liff.line.me/2007392080-pdLXAx9L/echo'
                         )
                     ),
                 ]
