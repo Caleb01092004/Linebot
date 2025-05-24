@@ -67,8 +67,8 @@ line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 def sendDataTobackend(user_id):
     try:
         response = requests.post(
-            "https://linebot-wpp0.onrender.com",
-            #"https://digital-art-backend-nq89.onrender.com/api/user/add",
+            #"https://linebot-wpp0.onrender.com/api/user/add",
+            "https://digital-art-backend-nq89.onrender.com/api/user/add",
             json={"user_id": user_id}
         )
         response.raise_for_status()
