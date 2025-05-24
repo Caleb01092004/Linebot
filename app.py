@@ -321,23 +321,23 @@ def handle_message(event):
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
-                        action=PostbackAction(
+                        action=URIAction(
                             label='TouchToOpen',
-                            data = 'task2'
+                            uri='https://www.google.com'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
-                        action=PostbackAction(
+                        action=URIAction(
                             label='TouchToOpen',
-                            data = 'task3'
+                            uri='https://www.google.com'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
-                        action=PostbackAction(
+                        action=URIAction(
                             label='TouchToOpen',
-                            data = 'task4'
+                            uri='https://www.google.com'
                         )
                     ),
                 ]
@@ -350,34 +350,6 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[image_carousel_message]
-                )
-            )
-        elif data == 'task1':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是任務1的詳細說明')]
-                )
-            )
-        elif data == 'task2':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是任務2的詳細說明')]
-                )
-            )
-        elif data == 'task3':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是任務3的詳細說明')]
-                )
-            )
-        elif data == 'task4':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是任務4的詳細說明')]
                 )
             )
         elif data == 'Core':
