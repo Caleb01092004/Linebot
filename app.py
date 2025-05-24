@@ -292,6 +292,7 @@ def handle_message(event):
             )
         )
     #https://digital-art-frontend.onrender.com/muu
+    #sendDataTobackend(user_id)
 @line_handler.add(PostbackEvent)
 def handle_message(event):
     data = event.postback.data
