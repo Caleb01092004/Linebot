@@ -324,14 +324,16 @@ def handle_message(event):
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri='https://liff.line.me/2007392080-pdLXAx9L/muu'
+                            uri='https://digital-art-frontend.onrender.com/muu'
+                            #uri='https://liff.line.me/2007392080-pdLXAx9L/muu'
                         )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri='https://liff.line.me/2007392080-pdLXAx9L/gender'
+                            uri='https://digital-art-frontend.onrender.com/gender'
+                            #uri='https://liff.line.me/2007392080-pdLXAx9L/gender'
                         )
                     ),
                     ImageCarouselColumn(
