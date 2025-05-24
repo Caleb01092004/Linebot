@@ -199,6 +199,7 @@ def handle_follow(event):
                 messages=[TextMessage(text="執子之手\n方知子醜")]
             )
         )
+    sendDataTobackend(user_id)
 @line_handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     if event.source.type != 'user':
@@ -342,7 +343,6 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
-            sendDataTobackend(user_id)
         elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
