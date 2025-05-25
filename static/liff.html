@@ -383,10 +383,10 @@
             }
         }
         function updateOverlays(data) {
-            if (true) {
+            if (data.lotus) {
                 document.getElementById('Lotus').style.display = 'block';
             }
-            if (true) {
+            if (data.echo) {
                 document.getElementById('Echo').style.display = 'block';
             }
             if (data.muu) {
@@ -394,6 +394,18 @@
             }
             if (data.gender) {
                 document.getElementById('Gender').style.display = 'block';
+            }
+            if (data.cow) {
+                document.getElementById('Cow').style.display = 'block';
+            }
+            if (data.turtle) {
+                document.getElementById('Turtle').style.display = 'block';
+            }
+            if (data.mouseCode) {
+                document.getElementById('Code').style.display = 'block';
+            }
+            if (data.caterpillar) {
+                document.getElementById('Cater').style.display = 'block';
             }
         // 可以添加更多条件和叠图
         }
