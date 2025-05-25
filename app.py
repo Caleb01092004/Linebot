@@ -320,8 +320,6 @@ def handle_message(event):
                 messages=[TextMessage(text="您好~這裡是自動回覆訊息\n點擊選單HELP或在聊天室輸入\"HELP\"了解更多\n對於這次的展覽有任何想法或疑惑都歡迎私訊我們的IG粉專:You_as_a_unit\n點擊下方連結快速加入\nhttps://liff.line.me/2007392080-yXExAKkE\n")]
             )
         )
-    #https://digital-art-frontend.onrender.com/muu
-    #sendDataTobackend(user_id)
 @line_handler.add(PostbackEvent)
 def handle_message(event):
     data = event.postback.data

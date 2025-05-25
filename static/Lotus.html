@@ -134,7 +134,7 @@
                 statusElement.className = "status-message";
                 statusElement.textContent = '正在發送資料到後端...';
                 
-                const response = await fetch("https://linebot-wpp0.onrender.com/liff-data", {
+                const response = await fetch("https://digital-art-backend-nq89.onrender.com/api/user/add", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
@@ -149,7 +149,7 @@
                 
                 statusElement.className = "status-message status-success";
                 statusElement.textContent = '資料傳輸成功！';
-                
+                window.location.href = "https://your-website.com/thank-you";
                 return result;
             } catch (err) {
                 console.error("發送資料失敗", err);
@@ -192,7 +192,6 @@
                 document.body.appendChild(button);
             }
         }
-
         window.onload = initLiff;
     </script>
 </head>
