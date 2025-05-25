@@ -273,7 +273,8 @@
                     const displayName = profile.displayName;
                     
                     // 调用获取用户数据的函数
-                    await fetchUserData(userId);
+                    const userData = fetchUserData(userId);
+                    updateOverlays(userData);
                 }
             } catch (error) {
                 console.error("LIFF 初始化失败:", error);
