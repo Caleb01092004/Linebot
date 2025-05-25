@@ -251,11 +251,13 @@ def handle_message(event):
                 )
             )
         elif text == "HELP":
-            postback_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
-            message_icon = 'https://linebot-wpp0.onrender.com/static/t2.png'
-            datetime_icon = 'https://linebot-wpp0.onrender.com/static/t3.png'
-            date_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
-            time_icon = 'https://linebot-wpp0.onrender.com/static/t1.png'
+            maintask_icon = 'https://linebot-wpp0.onrender.com/static/icon/maintask.png'
+            subtask_icon = 'https://linebot-wpp0.onrender.com/static/icon/subtask.png'
+            core_icon = 'https://linebot-wpp0.onrender.com/static/icon/core.png'
+            map_icon = 'https://linebot-wpp0.onrender.com/static/icon/mapIcon.png'
+            welcome_icon = 'https://linebot-wpp0.onrender.com/static/icon/welcome.png'
+            about_icon = 'https://linebot-wpp0.onrender.com/static/icon/aboutLine.png'
+            contact_icon = 'https://linebot-wpp0.onrender.com/static/icon/contact.png'
             quickReply = QuickReply(
                 items=[
                     QuickReplyItem(
@@ -264,7 +266,7 @@ def handle_message(event):
                             data='Core',
                             display_text="不免俗的一大口好事多超強氣泡水挑戰"
                         ),
-                        image_url=postback_icon
+                        image_url=core_icon
                     ),
                     QuickReplyItem(
                         action=PostbackAction(
@@ -272,7 +274,7 @@ def handle_message(event):
                             data='MainTask',
                             display_text="主線任務跟煮麵線有關嗎?"
                         ),
-                        image_url=message_icon
+                        image_url=maintask_icon
                     ),
                     QuickReplyItem(
                        action=PostbackAction(
@@ -280,7 +282,7 @@ def handle_message(event):
                             data='SubTask',
                             display_text="蛤!還有支線D:?!"
                         ),
-                        image_url=date_icon
+                        image_url=subtask_icon
                     ),
                     QuickReplyItem(
                         action=PostbackAction(
@@ -288,7 +290,7 @@ def handle_message(event):
                             data='Map',
                             display_text="地圖是做甚麼的?告訴我嘛~"
                         ),
-                        image_url=time_icon
+                        image_url= map_icon
                     ),
                     QuickReplyItem(
                         action=PostbackAction(
@@ -296,7 +298,7 @@ def handle_message(event):
                             data='Welcome',
                             display_text="我加你時你講了啥?再說一次嘛~\n啾咪<3"
                         ),
-                        image_url=postback_icon
+                        image_url=welcome_icon
                     ),
                      QuickReplyItem(
                         action=PostbackAction(
@@ -304,7 +306,7 @@ def handle_message(event):
                             data='LineAccount',
                             display_text="我想斗內"
                         ),
-                        image_url=postback_icon
+                        image_url=about_icon
                     ),
                     QuickReplyItem(
                        action=PostbackAction(
@@ -312,7 +314,7 @@ def handle_message(event):
                             data='Contact',
                             display_text="小哥哥小姐接我好想認識你們呀~<3"
                         ),
-                        image_url=datetime_icon
+                        image_url=contact_icon
                     ),
                 ]
             )
