@@ -122,9 +122,9 @@ def create_rich_menu_1():
                     width=1671,
                     height=1686
                 ),
-                action=URIAction(
-                    label='開啟網站',
-                    uri='https://www.google.com'
+                action=PostbackAction(#主線任務
+                    label='打開地圖',
+                    data = 'openMap'
                 )
             ),
             RichMenuArea(
