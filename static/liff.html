@@ -233,6 +233,7 @@
       max-height: 30px; /* 限制最大高度 */
       width: auto;
       height: auto;
+      display: none;
       z-index: 10;
     }
     .Muu {
@@ -335,7 +336,12 @@
             if (data.echo) {
                 document.getElementById('Echo').style.display = 'block';
             }
-        
+            if (data.muu) {
+                document.getElementById('Muu').style.display = 'block';
+            }
+            if (data.gender) {
+                document.getElementById('Gender').style.display = 'block';
+            }
         // 可以添加更多条件和叠图
         }
             window.onload = initLiff;
