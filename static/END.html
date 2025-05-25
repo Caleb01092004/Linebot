@@ -77,18 +77,10 @@
                     const userId = profile.userId;
                     const displayName = profile.displayName;
                     // 準備發送到後端的數據
-                    const data ={
-                        "userId": userId,
-                        "name": displayName,
-                        "qualification": false,
-                        "echo": false,
-                        "gender": false,
-                        "lotus": false,
-                        "muu": false,
-                        "caterpillar": false,
-                        "cow": false,
-                        "mouseCode": false,
-                        "turtle": false
+                    const data={
+                        "userId":userId,
+                        "name":displayName,
+                        "mission":"task-completed"
                     };
                     // 更新UI
                     document.getElementById("displayName").textContent = `Hello, ${profile.displayName}`;
@@ -108,7 +100,7 @@
                     
                     // 發送資料到後端
                     await sendDataToBackend(data);
-                    window.location.href = "https://digital-art-frontend.onrender.com/?userId=123&name=Ke&mission=task-completed";
+                    //window.location.href = "https://digital-art-frontend.onrender.com/?userId=123&name=Ke&mission=task-completed";
                 }
             } catch (err) {
                 console.error("LIFF 初始化失敗", err);
@@ -126,7 +118,7 @@
                 statusElement.className = "status-message";
                 statusElement.textContent = 'Loading...';
                 
-                const response = await fetch("https://digital-art-backend-nq89.onrender.com/api/users/add", {
+                const response = await fetch("https://digital-art-frontend.onrender.com", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
