@@ -223,7 +223,7 @@
       width: 100vw;
       height: 100vh;
       background-image: url("https://linebot-wpp0.onrender.com/static/Map/map.png");
-      background-size: cover;            /* 或試試 contain, 100% 100% */
+      background-size: 100% 100%;            /* 或試試 contain, 100% 100% */
       background-position: center center;
       background-repeat: no-repeat;
       overflow: hidden;
@@ -241,6 +241,15 @@
             await liff.init({ liffId: "2007392080-pdLXAx9L" });
             if (!liff.isLoggedIn()) {
             liff.login();
+            }
+            else{
+                const profile = await liff.getProfile();
+                const context = liff.getContext();
+                const decodedToken = liff.getDecodedIDToken();
+                // 獲取URL參數
+                const urlParams = new URLSearchParams(window.location.search);
+                const userId = profile.userId;
+                const displayName = profile.displayName;
             }
         } catch (error) {
             console.error("LIFF 初始化失敗:", error);
