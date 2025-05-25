@@ -282,7 +282,7 @@ def handle_message(event):
                         action=PostbackAction(
                             label="歡迎內容",
                             data='Welcome',
-                            display_text="我加你時你講了啥?再說一次嘛~啾咪<3"
+                            display_text="我加你時你講了啥?再說一次嘛~\n啾咪<3"
                         ),
                         image_url=postback_icon
                     ),
@@ -387,7 +387,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，可能會讓你感到困惑或是迷失方向，但這正是創作者想要表達的意圖。支線任務不僅僅是為了完成某個目標，而是讓你在探索過程中發現更多的可能性和樂趣。希望你能享受這段旅程，並找到屬於自己的答案。總之，加一點好多胡椒鹽。')]
+                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，可能會讓你感到困惑或是迷失方向，但這正是創作者想要表達的意圖。\n支線任務不僅僅是為了完成某個目標，而是讓你在探索過程中發現更多的可能性和樂趣。希望你能享受這段旅程，並找到屬於自己的答案。\n總之，加一點好多胡椒鹽。')]
                 )
             )
         elif data == 'Map':
@@ -395,7 +395,7 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(
-                        text='這不只是任務地圖，而是一場探索，也是一場迷路。有時候，我們不是為了找到什麼，而是為了看見那些從沒注意過的角落—— 一張你沒拍過的照片、一本沒人借過的書，甚至是一頭你從沒見過的牛。')]
+                        text='這不只是任務地圖，而是一場探索，也是一場迷路。\n有時候，我們不是為了找到什麼，而是為了看見那些從沒注意過的角落—— 一張你沒拍過的照片、一本沒人借過的書，甚至是一頭你從沒見過的牛。')]
                 )
             )
         elif data == 'Welcome':
