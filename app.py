@@ -148,7 +148,7 @@ def create_rich_menu_1():
                 ),
                 action=PostbackAction(
                     label='打開圖片選單',
-                    data='open_task_menu1'
+                    data='open_task_menu2'
                 )
             ),
             RichMenuArea(
