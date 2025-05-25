@@ -286,6 +286,14 @@ def handle_message(event):
                         ),
                         image_url=postback_icon
                     ),
+                     QuickReplyItem(
+                        action=PostbackAction(
+                            label="關於Line帳號",
+                            data='LineAccount',
+                            display_text="我想斗內"
+                        ),
+                        image_url=postback_icon
+                    ),
                     QuickReplyItem(
                        action=PostbackAction(
                             label="聯絡我們",
