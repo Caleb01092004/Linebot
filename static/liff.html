@@ -252,9 +252,13 @@
                 const displayName = profile.displayName;
                     
                 const userData = await fetchUserData(userId);
+                if (!userData) {
+                    console.error("使用者資料無法取得");
+                    return;
+                }
                 await updateOverlays(userData);
                 const dataSend ={
-                        "userId": userData.get("userId"),
+                        "userId": userData.userId,
                         "name": userData.name,
                         "qualification": userData.qualification,
                         "echo": userData.echo,
@@ -330,23 +334,10 @@
             gender: document.getElementById('gender-icon'),
             muu: document.getElementById('muu-icon')
             };
-            if (data.lotus && icons.lotus) icons.lotus.style.display = 'block';
+            if (true) icons.lotus.style.display = 'block';
             if (data.echo && icons.echo) icons.echo.style.display = 'block';
             if (data.gender && icons.gender) icons.gender.style.display = 'block';
             if (data.muu && icons.muu) icons.muu.style.display = 'block';
-            // if (true) {
-            //     document.getElementById('Lotus').style.display = 'block';
-            // }
-            // if (true) {
-            //     document.getElementById('Echo').style.display = 'block';
-            // }
-            // if (data.muu) {
-            //     document.getElementById('Muu').style.display = 'block';
-            // }
-            // if (data.gender) {
-            //     document.getElementById('Gender').style.display = 'block';
-            // }
-        // 可以添加更多条件和叠图
         }
         window.onload = initLiff;
     </script>
