@@ -134,13 +134,13 @@ def create_rich_menu_1():
                     width=827,
                     height=852
                 ),
-                action=PostbackAction(
+                action=PostbackAction(#主線任務
                     label='打開圖片選單',
                     data = 'open_task_menu1'
                 )
             ),
              RichMenuArea(
-                bounds=RichMenuBounds(#主線任務
+                bounds=RichMenuBounds(#支線任務
                     x=1699,
                     y=844,
                     width=831,
@@ -152,7 +152,7 @@ def create_rich_menu_1():
                 )
             ),
             RichMenuArea(
-                bounds=RichMenuBounds(#支線任務
+                bounds=RichMenuBounds(
                     x=1672,
                     y=1508,
                     width=828,
@@ -360,15 +360,6 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
-            try:
-                response = requests.post(
-                    "https://digital-art-backend-nq89.onrender.com/api/user/add",
-                    json={"user_id": user_id}
-                )
-                response.raise_for_status()
-                backend_reply = "後端已成功記錄你的使用者資訊！"
-            except Exception as e:
-                backend_reply = f"記錄時發生錯誤：{str(e)}"
         elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
