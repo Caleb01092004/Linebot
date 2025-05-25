@@ -109,11 +109,6 @@
                     // 發送資料到後端
                     await sendDataToBackend(data);
                     
-                    // 添加功能按鈕
-                    if (liff.isInClient()) {
-                        addCloseButton();
-                    }
-                    addShareButton();
                 }
             } catch (err) {
                 console.error("LIFF 初始化失敗", err);
