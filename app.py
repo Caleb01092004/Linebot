@@ -82,8 +82,6 @@ def liff_data():
     
     user_id = data.get("userId")
     display_name = data.get("displayName")
-    url_params = data.get("urlParams", {})
-    universalId = data.get("universalId")
     
     if not user_id:
         logger.warning("沒有 userId，資料格式不正確")
@@ -91,8 +89,6 @@ def liff_data():
 
     logger.info(f"來自 LIFF 的使用者 ID：{user_id}")
     logger.info(f"使用者名稱：{display_name}")
-    logger.info(f"URL 參數：{url_params}")
-    logger.info(f"URL 參數：{universalId}")
     
     return jsonify({'status': 'success', 'message': '資料接收成功'})
     
