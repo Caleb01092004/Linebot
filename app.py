@@ -413,6 +413,13 @@ def handle_message(event):
                     messages=[TextMessage(text='敬請期待')]
                 )
             )
+        elif data == 'LineAccount':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='地方企鵝良心製作，需要您的關心。\n歡迎一鍵三連結，發顆小紅心。\n關注企鵝IG:idk_cal0109')]
+                )
+            )
         elif data == 'Contact':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
