@@ -300,16 +300,16 @@
                 
                 if (!liff.isLoggedIn()) {
                     liff.login();
-                } else {
-                    const profile = await liff.getProfile();
-                    const userId = profile.userId;
-                    const displayName = profile.displayName;
-                    
-                    // 调用获取用户数据的函数
-                    const userData = fetchUserData(userId);
-                    updateOverlays(userData);
-                    sendDataToBackend(userData);
                 }
+                const profile = await liff.getProfile();
+                const userId = profile.userId;
+                const displayName = profile.displayName;
+                    
+                // 调用获取用户数据的函数
+                const userData = fetchUserData(userId);
+                updateOverlays(userData);
+                sendDataToBackend(userData);
+                
             } catch (error) {
                 console.error("LIFF 初始化失败:", error);
             }
