@@ -208,6 +208,7 @@
     <div id="statusMessage" class="status-message"></div>
 </body>
 </html> -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -229,13 +230,76 @@
       height: 80vh;
       overflow: hidden; /* 確保圖片不會超出邊界 */
     }
-    .Icon {
+    .Lotus {
       position: absolute;
       max-width: 30px;  /* 限制最大寬度 */
       max-height: 30px; /* 限制最大高度 */
       width: auto;
       height: auto;
-      /* display: none; */
+      display: none;
+      z-index: 10;
+    }
+    .Muu {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
+      z-index: 10;
+    }
+    .Echo {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
+      z-index: 10;
+    }
+    .Gender {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
+      z-index: 10;
+    }
+    .Cow {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
+      z-index: 10;
+    }
+    .Turtle {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
+      z-index: 10;
+    }
+    .Code {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
+      z-index: 10;
+    }
+    .Cater {
+      position: absolute;
+      max-width: 30px;  /* 限制最大寬度 */
+      max-height: 30px; /* 限制最大高度 */
+      width: auto;
+      height: auto;
+      display: none;
       z-index: 10;
     }
   </style>
@@ -252,10 +316,6 @@
                 const displayName = profile.displayName;
                     
                 const userData = await fetchUserData(userId);
-                if (!userData) {
-                    console.error("使用者資料無法取得");
-                    return;
-                }
                 await updateOverlays(userData);
                 const dataSend ={
                         "userId": userData.userId,
@@ -328,30 +388,33 @@
         }
         function updateOverlays(data) {
         // 示例条件判断
-            const icons = {
-            lotus: document.getElementById('lotus-icon'),
-            echo: document.getElementById('echo-icon'),
-            gender: document.getElementById('gender-icon'),
-            muu: document.getElementById('muu-icon')
-            };
-            if (true) icons.lotus.style.display = 'block';
-            if (data.echo && icons.echo) icons.echo.style.display = 'block';
-            if (data.gender && icons.gender) icons.gender.style.display = 'block';
-            if (data.muu && icons.muu) icons.muu.style.display = 'block';
+            if (true) {
+                document.getElementById('Lotus').style.display = 'block';
+            }
+            if (true) {
+                document.getElementById('Echo').style.display = 'block';
+            }
+            if (data.muu) {
+                document.getElementById('Muu').style.display = 'block';
+            }
+            if (data.gender) {
+                document.getElementById('Gender').style.display = 'block';
+            }
+        // 可以添加更多条件和叠图
         }
         window.onload = initLiff;
     </script>
 </head>
 <body>
   <div class="background">
-    <img id="lotus-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 800px; left: 150px;">
-    <img id="echo-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 800px; left: 550px;">
-    <img id="gender-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 800px; left: 500px;">
-    <img id="muu-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 800px; left: 700px;">
-    <img id="cow-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 400px; left: 150px;">
-    <img id="turtle-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 400px; left: 550px;">
-    <img id="code-icon" src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 400px; left: 500px;">
-    <img id="caterpillar-icon"src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Icon" style="top: 400px; left: 700px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Lotus" style="top: 800px; left: 150px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Muu" style="top: 800px; left: 550px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Echo" style="top: 800px; left: 500px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Gender" style="top: 800px; left: 700px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Cow" style="top: 400px; left: 150px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Turtle" style="top: 400px; left: 550px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Code" style="top: 400px; left: 500px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.PNG" class="Cater" style="top: 400px; left: 700px;">
   </div>
 </body>
 </html>
