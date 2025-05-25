@@ -203,14 +203,6 @@ def create_rich_menu_1():
 @line_handler.add(FollowEvent)#加入好友事件
 def handle_follow(event):
     user_id = event.source.user_id
-    with ApiClient(configuration) as api_client:
-        line_bot_api = MessagingApi(api_client)
-        line_bot_api.reply_message_with_http_info(
-            ReplyMessageRequest(
-                reply_token=event.reply_token,
-                messages=[TextMessage(text="執子之手\n方知子醜")]
-            )
-        )
     try:
         response = requests.post(
             "https://digital-art-backend-nq89.onrender.com/api/user/add",
