@@ -333,7 +333,7 @@ def handle_message(event):
             result = line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
-                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n點擊選單HELP或在聊天室輸入\"HELP\"了解更多\n對於這次的展覽有任何想法或疑惑都歡迎私訊我們的IG粉專:You_as_a_unit\n點擊下方連結快速加入\nhttps://liff.line.me/2007392080-yXExAKkE\n")]
+                messages=[TextMessage(text="您好~這裡是自動回覆訊息\n點擊選單HELP或在聊天室輸入\"HELP\"了解更多\n對於這次的展覽有任何想法或疑惑都歡迎私訊我們的IG粉專:You_as_a_unit\n點擊下方連結快速加入\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==")]
             )
         )
 @line_handler.add(PostbackEvent)
