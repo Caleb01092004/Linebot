@@ -251,7 +251,7 @@
                     
                 const userData = await fetchUserData(userId);
                 await updateOverlays(userData);
-                await sendDataToBackend(userData);
+                await sendDataToBackend({userData: userData});
                 
             } catch (error) {
                 console.error("LIFF 初始化失败:", error);
