@@ -250,7 +250,7 @@ def handle_message(event):
                         action=PostbackAction(
                             label="創作理念",
                             data='Core',
-                            display_text="關於創作理念"
+                            display_text="不免俗的一大口好事多超強氣泡水挑戰"
                         ),
                         image_url=postback_icon
                     ),
@@ -258,7 +258,7 @@ def handle_message(event):
                         action=PostbackAction(
                             label="主線任務",
                             data='MainTask',
-                            display_text="關於主線任務"
+                            display_text="主線任務跟煮麵線有關嗎?"
                         ),
                         image_url=message_icon
                     ),
@@ -266,7 +266,7 @@ def handle_message(event):
                        action=PostbackAction(
                             label="支線任務",
                             data='SubTask',
-                            display_text="關於支線任務"
+                            display_text="蛤!還有支線D:?!"
                         ),
                         image_url=date_icon
                     ),
@@ -274,15 +274,23 @@ def handle_message(event):
                         action=PostbackAction(
                             label="地圖",
                             data='Map',
-                            display_text="關於地圖"
+                            display_text="地圖是做甚麼的?告訴我嘛~"
                         ),
                         image_url=time_icon
+                    ),
+                    QuickReplyItem(
+                        action=PostbackAction(
+                            label="歡迎內容",
+                            data='Welcome',
+                            display_text="我加你時你講了啥?再說一次嘛~啾咪<3"
+                        ),
+                        image_url=postback_icon
                     ),
                     QuickReplyItem(
                        action=PostbackAction(
                             label="聯絡我們",
                             data='Contact',
-                            display_text="聯絡資訊"
+                            display_text="小哥哥小姐接我好想認識你們呀~<3"
                         ),
                         image_url=datetime_icon
                     ),
@@ -372,14 +380,14 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='快點起身，參與所有的展品吧!')]
+                    messages=[TextMessage(text='快去做，別磨叽>:0!')]
                 )
             )
         elif data == 'SubTask':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，快去做!')]
+                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，可能會讓你感到困惑或是迷失方向，但這正是創作者想要表達的意圖。支線任務不僅僅是為了完成某個目標，而是讓你在探索過程中發現更多的可能性和樂趣。希望你能享受這段旅程，並找到屬於自己的答案。總之，加一點好多胡椒鹽')]
                 )
             )
         elif data == 'Map':
