@@ -387,7 +387,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，可能會讓你感到困惑或是迷失方向，但這正是創作者想要表達的意圖。\n支線任務不僅僅是為了完成某個目標，而是讓你在探索過程中發現更多的可能性和樂趣。希望你能享受這段旅程，並找到屬於自己的答案。\n總之，加一點好多胡椒鹽。')]
+                    messages=[TextMessage(text='非常任性的創作者設計的支線任務，可能會讓你感到困惑或是迷失方向，但這正是創作者想要表達的意圖。\n支線任務不僅僅是為了完成某個目標，而是讓你在探索過程中發現更多的可能性和樂趣。希望你能享受這段旅程，並找到屬於自己的答案。\n總之。加一點好多胡椒鹽。')]
                 )
             )
         elif data == 'Map':
@@ -409,7 +409,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='這是聯絡方式')]
+                    messages=[TextMessage(text='不要')]
                 )
             )
         else:
