@@ -376,6 +376,52 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
+        if data == 'open_task_menu2':
+            image_carousel_template = ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
+                        action=URIAction(
+                            label='TouchToOpen',
+                            #uri='https://digital-art-frontend.onrender.com/lotus'
+                            uri = 'https://liff.line.me/2007392080-gEDLrwOD'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
+                        action=URIAction(
+                            label='TouchToOpen',
+                            #uri='https://digital-art-frontend.onrender.com/muu'
+                            uri = 'https://liff.line.me/2007392080-L1Kjqd9K'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
+                        action=URIAction(
+                            label='TouchToOpen',
+                            #uri='https://digital-art-frontend.onrender.com/gender'
+                            uri = 'https://liff.line.me/2007392080-BQjk8XQj'
+                        )
+                    ),
+                    ImageCarouselColumn(
+                        image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
+                        action=URIAction(
+                            label='TouchToOpen',
+                            uri = 'https://liff.line.me/2007392080-ybnwboRn'
+                        )
+                    ),
+                ]
+            )
+            image_carousel_message = TemplateMessage(
+                alt_text='圖片輪播範本',
+                template=image_carousel_template
+            )
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[image_carousel_message]
+                )
+            )
         elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
@@ -425,6 +471,13 @@ def handle_message(event):
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(text='不要')]
+                )
+            )
+        elif data == 'openMap':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='地圖功能尚未開放，敬請期待')]
                 )
             )
         else:
