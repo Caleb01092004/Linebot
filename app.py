@@ -64,17 +64,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
 line_handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
-def sendDataTobackend(user_id):
-    try:
-        response = requests.post(
-            #"https://linebot-wpp0.onrender.com/api/user/add",
-            "https://digital-art-backend-nq89.onrender.com/api/user/add",
-            json={"user_id": user_id}
-        )
-        response.raise_for_status()
-        return True, "後端已成功記錄你的使用者資訊！"
-    except Exception as e:
-        return False, f"記錄時發生錯誤：{str(e)}"
 @app.route("/liff-data", methods=["POST"])
 def liff_data():
     data = request.get_json()
@@ -91,7 +80,34 @@ def liff_data():
     logger.info(f"使用者名稱：{display_name}")
     
     return jsonify({'status': 'success', 'message': '資料接收成功'})
-    
+@app.route("/From", methods=["POST"])
+def get_progress():
+    data = request.get_json()
+    user_id = data.get("userId")
+    display_name = data.get("displayName")
+    echo = data.get("echo")
+    gender = data.get("gender")
+    lotus = data.get("lotus")
+    muu = data.get("muu")
+    caterpillar = data.get("caterpillar")
+    cow = data.get("cow")
+    mouseCode = data.get("mouseCode")
+    turtle = data.get("turtle")
+    if not user_id:
+        logger.warning("沒有 userId，資料格式不正確")
+        return jsonify({'status': 'error', 'message': '缺少 userId'}), 400
+
+    logger.info(f"來自 LIFF 的使用者 ID：{user_id}")
+    logger.info(f"使用者名稱：{display_name}")
+    logger.info(f"echo：{echo}")
+    logger.info(f"gender：{gender}")
+    logger.info(f"lotus：{lotus}")
+    logger.info(f"muu：{muu}")
+    logger.info(f"caterpillar：{caterpillar}")
+    logger.info(f"cow：{cow}")
+    logger.info(f"mouseCode：{mouseCode}")
+    logger.info(f"turtle：{turtle}")
+    return jsonify({'status': 'success', 'message': '資料接收成功'})
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
@@ -460,10 +476,15 @@ def handle_message(event):
                 )
             )
         elif data == 'openMap':
+            url = request.url_root + 'static/Logo.jpg'
+            url = url.replace("http", "https")
+            app.logger.info("url=" + url)
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='地圖功能尚未開放，敬請期待')]
+                    messages=[
+                        ImageMessage(original_content_url=url, preview_image_url=url)
+                    ]
                 )
             )
         else:
