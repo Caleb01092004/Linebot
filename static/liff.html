@@ -249,9 +249,9 @@
                 const userId = profile.userId;
                 const displayName = profile.displayName;
                     
-                const userData = fetchUserData(userId);
-                updateOverlays(userData);
-                sendDataToBackend(userData);
+                const userData = await fetchUserData(userId);
+                await updateOverlays(userData);
+                await sendDataToBackend(userData);
                 
             } catch (error) {
                 console.error("LIFF 初始化失败:", error);
