@@ -72,6 +72,8 @@
                     const profile = await liff.getProfile();
                     const context = liff.getContext();
                     const decodedToken = liff.getDecodedIDToken();
+                    // 獲取URL參數
+                    const urlParams = new URLSearchParams(window.location.search);
                     
                     // 準備發送到後端的數據
                     const data = {
