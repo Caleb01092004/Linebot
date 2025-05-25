@@ -107,7 +107,7 @@
                         `語言: ${liff.getLanguage()} | 系統: ${liff.getOS()}`;
                     
                     // 發送資料到後端
-                    //await sendDataToBackend(data);
+                    await sendDataToBackend(data);
                     window.location.href = `https://digital-art-frontend.onrender.com/?userId=${userId}&name=${displayName}&mission=mousecode`;
                     //window.location.href = `https://digital-art-backend-nq89.onrender.com/api/users/${userId}`;
                     
