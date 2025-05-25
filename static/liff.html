@@ -294,7 +294,18 @@
                 console.error("获取用户数据时出错:", error);
             }
         }
-        window.onload = initLiff;
+        function updateOverlays(data) {
+        // 示例条件判断
+            if (data.lotus) {
+                document.getElementById('Lotus').style.display = 'block';
+            }
+            if (data.echo) {
+                document.getElementById('Echo').style.display = 'block';
+            }
+        
+        // 可以添加更多条件和叠图
+        }
+            window.onload = initLiff;
     </script>
 </head>
 <body>
