@@ -221,7 +221,7 @@
     .background {
       position: relative;
       background-image: url('https://linebot-wpp0.onrender.com/static/Map/map.png');
-      background-size: 100% 100%;      /* 自動縮放填滿 */
+      background-size: contain;      /* 自動縮放填滿 */
       background-position: center; /* 圖片置中對齊 */
       background-repeat: no-repeat;
       height: 80vh;
@@ -229,6 +229,8 @@
     }
     .overlay {
       position: absolute;
+      max-width: 100px;  /* 限制最大寬度 */
+      max-height: 100px; /* 限制最大高度 */
       width: auto;
       height: auto;
       z-index: 10;
