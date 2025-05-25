@@ -58,10 +58,8 @@ import os
 import requests
 import logging
 from functools import wraps
-from flask_cors import CORS
 import json
 app = Flask(__name__)
-CORS(app)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
