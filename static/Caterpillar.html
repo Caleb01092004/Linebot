@@ -62,7 +62,7 @@
         async function initLiff() {
             try {
                 // 初始化 LIFF
-                await liff.init({ liffId: "2007392080-gEDLrwOD" });
+                await liff.init({ liffId: "2007392080-L1Kjqd9K" });
                 
                 if (!liff.isLoggedIn()) {
                     // 如果未登入，執行登入
@@ -131,7 +131,7 @@
                 statusElement.className = "status-message";
                 statusElement.textContent = 'Loading...';
                 
-                const response = await fetch("https://digital-art-backend-nq89.onrender.com/api/users/add", {
+                const response = await fetch("https://linebot-wpp0.onrender.com/liff-data", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)
@@ -146,7 +146,7 @@
                 
                 statusElement.className = "status-message status-success";
                 statusElement.textContent = 'Loading Success!';
-                window.location.href = "https://digital-art-frontend.onrender.com/lotus";
+                window.location.href = "https://digital-art-frontend.onrender.com/muu";
                 return result;
             } catch (err) {
                 console.error("發送資料失敗", err);
