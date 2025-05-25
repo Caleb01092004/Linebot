@@ -62,7 +62,7 @@
         async function initLiff() {
             try {
                 // 初始化 LIFF
-                await liff.init({ liffId: "2007392080-X58OlGm8" });
+                await liff.init({ liffId: "2007392080-yXExAKkE" });
                 
                 if (!liff.isLoggedIn()) {
                     // 如果未登入，執行登入
@@ -108,7 +108,7 @@
                     
                     // 發送資料到後端
                     //await sendDataToBackend(data);
-                    window.location.href = `https://digital-art-frontend.onrender.com/?userId=${userId}&name=${displayName}&mission=turtle`;
+                    window.location.href = `https://digital-art-frontend.onrender.com/task-completed`;
                 }
             } catch (err) {
                 console.error("LIFF 初始化失敗", err);
