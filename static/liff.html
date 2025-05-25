@@ -212,32 +212,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LIFF 背景圖片</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        body {
-            background-image: url("https://linebot-wpp0.onrender.com/static/map.png"); /* ← 換成你自己的圖片網址 */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    </style>
-    <script>
-        window.onload = async function () {
-            await liff.init({ liffId: "你的LIFF-ID" }); // ← 請填入你的 LIFF ID
-            if (!liff.isLoggedIn()) {
-                liff.login({ redirectUri: window.location.href });
-            }
-        };
-    </script>
+  <title>多張圖片疊加</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .background {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("https://linebot-wpp0.onrender.com/static/Map/map.png");
+      background-size: cover;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      width: 100px;
+      height: auto;
+      z-index: 10;
+    }
+  </style>
 </head>
 <body>
+  <div class="background">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.png" class="overlay" style="top: 50px; left: 100px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.png" class="overlay" style="top: 150px; left: 200px;">
+    <img src="https://linebot-wpp0.onrender.com/static/Map/Finish.png" class="overlay" style="bottom: 50px; right: 50px;">
+  </div>
 </body>
 </html>
