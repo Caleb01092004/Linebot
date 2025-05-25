@@ -58,8 +58,10 @@ import os
 import requests
 import logging
 from functools import wraps
+from flask_cors import CORS
 import json
 app = Flask(__name__)
+CORS(app)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
@@ -82,7 +84,9 @@ def liff_data():
     return jsonify({'status': 'success', 'message': '資料接收成功'})
 @app.route("/From", methods=["POST"])
 def get_progress():
+    print("✅ 有進來 /From！")
     data = request.get_json()
+    logger.info(f"收到的 JSON 資料: {data}")
     user_id = data.get("userId")
     display_name = data.get("displayName")
     echo = data.get("echo")
