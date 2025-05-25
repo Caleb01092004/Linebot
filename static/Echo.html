@@ -151,7 +151,7 @@
             } catch (err) {
                 console.error("發送資料失敗", err);
                 statusElement.className = "status-message status-error";
-                statusElement.textContent = '資料傳輸失敗，請稍後再試';
+                statusElement.textContent = 'Loading fail, please try again later.';
                 
                 // 非 LINE 客戶端環境顯示完整錯誤
                 if (!liff.isInClient()) {
