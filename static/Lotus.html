@@ -74,13 +74,22 @@
                     const decodedToken = liff.getDecodedIDToken();
                     // 獲取URL參數
                     const urlParams = new URLSearchParams(window.location.search);
-                    
+                    const userId = profile.userId;
+                    const displayName = profile.displayName;
                     // 準備發送到後端的數據
-                    const data = {
-                        userId: profile.userId,
-                        displayName: profile.displayName
+                    const data ={
+                        "userId": userId,
+                        "name": displayName,
+                        "qualification": false,
+                        "echo": false,
+                        "gender": false,
+                        "lotus": false,
+                        "muu": false,
+                        "caterpillar": false,
+                        "cow": false,
+                        "mouseCode": false,
+                        "turtle": false
                     };
-
                     // 更新UI
                     document.getElementById("displayName").textContent = `Hello, ${profile.displayName}`;
                     
@@ -137,8 +146,7 @@
                 
                 statusElement.className = "status-message status-success";
                 statusElement.textContent = '資料傳輸成功！';
-                window.location.href = 'https://www.youtube.com/'
-                //window.location.href = "https://digital-art-frontend.onrender.com/lotus";
+                window.location.href = "https://digital-art-frontend.onrender.com/lotus";
                 return result;
             } catch (err) {
                 console.error("發送資料失敗", err);
