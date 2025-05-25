@@ -476,8 +476,7 @@ def handle_message(event):
                 )
             )
         elif data == 'openMap':
-            url = request.url_root + 'static/Logo.jpg'
-            url = url.replace("http", "https")
+            url = 'https://linebot-wpp0.onrender.com/static/map.png'
             app.logger.info("url=" + url)
             line_bot_api.reply_message(
                 ReplyMessageRequest(
