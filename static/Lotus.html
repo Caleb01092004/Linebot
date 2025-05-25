@@ -78,9 +78,9 @@
                     const displayName = profile.displayName;
                     // 準備發送到後端的數據
                     const data={
-                        userId: urlParams.get('userId'),
-                        name: urlParams.get('name'),
-                        mission: urlParams.get('mission')
+                        "userId":userId,
+                        "name":displayName,
+                        "mission":"lotus"
                     }
                     // 更新UI
                     document.getElementById("displayName").textContent = `Hello, ${profile.displayName}`;
@@ -97,11 +97,11 @@
                         profile.statusMessage || "無狀態消息";
                     document.getElementById("deviceInfo").textContent = 
                         `語言: ${liff.getLanguage()} | 系統: ${liff.getOS()}`;
-                    let url = "https://digital-art-frontend.onrender.com/?userId=" + userId + "&name=" + displayName + "&mission=lotus";
+                    //let url = "https://digital-art-frontend.onrender.com/?userId=" + userId + "&name=" + displayName + "&mission=lotus";
+                    //window.location.href = url;
                     // 發送資料到後端
                     await sendDataToBackend(data);
                     //window.location.href = `https://digital-art-frontend.onrender.com/?userId=${encodeURIComponent(userId)}&name=${encodeURIComponent(displayName)}&mission=lotus`;
-                    window.location.href = url;
                 }
             } catch (err) {
                 console.error("LIFF 初始化失敗", err);
