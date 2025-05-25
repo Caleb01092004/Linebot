@@ -120,13 +120,11 @@
                 console.error("LIFF 初始化失敗", err);
                 document.getElementById("displayName").className = "error";
                 document.getElementById("displayName").textContent = "發生錯誤，請重新載入頁面";
-                
                 const statusElement = document.getElementById("statusMessage");
                 statusElement.className = "status-message status-error";
                 statusElement.textContent = `錯誤: ${err.message}`;
             }
         }
-
         async function sendDataToBackend(data) {
             const statusElement = document.getElementById("statusMessage");
             
@@ -163,7 +161,6 @@
                 throw err;
             }
         }
-
         function addCloseButton() {
             const button = document.createElement("button");
             button.id = "closeButton";
@@ -171,7 +168,6 @@
             button.onclick = () => liff.closeWindow();
             document.body.appendChild(button);
         }
-        
         function addShareButton() {
             if (liff.isApiAvailable('shareTargetPicker')) {
                 const button = document.createElement("button");
