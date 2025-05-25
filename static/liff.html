@@ -290,10 +290,22 @@
         
         const profile = await liff.getProfile();
         const userData = await fetchUserData(profile.userId);
-        
+        const dataSend ={
+                        "userId": userData.userId,
+                        "name": userData.name,
+                        "qualification": userData.qualification,
+                        "echo": userData.echo,
+                        "gender": userData.gender,
+                        "lotus": userData.lotus,
+                        "muu": userData.muu,
+                        "caterpillar": userData.caterpillar,
+                        "cow": userData.cow,
+                        "mouseCode": userData.mouseCode,
+                        "turtle": userData.turtle
+                    };
         // 更新疊圖顯示
         updateOverlays(userData);
-        
+        await sendDataToBackend(dataSend);
       } catch (error) {
         console.error("初始化失敗:", error);
         alert("發生錯誤，請稍後再試");
@@ -302,7 +314,42 @@
         document.getElementById('loading').style.display = 'none';
       }
     }
-
+     async function sendDataToBackend(data) {
+            const statusElement = document.getElementById("statusMessage");
+            
+            try {
+                statusElement.className = "status-message";
+                statusElement.textContent = 'Loading...';
+                
+                const response = await fetch("https://linebot-wpp0.onrender.com/From", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`後端錯誤: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                console.log("後端回應:", result);
+                
+                statusElement.className = "status-message status-success";
+                statusElement.textContent = 'Loading Success!';
+                //window.location.href = "https://digital-art-frontend.onrender.com/lotus";
+                return result;
+            } catch (err) {
+                console.error("發送資料失敗", err);
+                statusElement.className = "status-message status-error";
+                statusElement.textContent = 'Loading fail, please try again later.';
+                
+                // 非 LINE 客戶端環境顯示完整錯誤
+                if (!liff.isInClient()) {
+                    statusElement.textContent += `: ${err.message}`;
+                }
+                throw err;
+            }
+        }
     async function fetchUserData(userId) {
       try {
         const response = await fetch(`https://digital-art-backend-nq89.onrender.com/api/users/${userId}`);
