@@ -318,6 +318,14 @@ def handle_message(event):
                         ),
                         image_url=contact_icon
                     ),
+                    QuickReplyItem(
+                       action=PostbackAction(
+                            label="結束了...?",
+                            data='end',
+                            display_text="挖ㄚㄚㄚㄚ"
+                        ),
+                        image_url=contact_icon
+                    ),
                 ]
             )
             line_bot_api.reply_message(
@@ -473,6 +481,13 @@ def handle_message(event):
                 )
             )
         elif data == 'Contact':
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='不要')]
+                )
+            )
+        elif data == 'end':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
