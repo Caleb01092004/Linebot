@@ -217,16 +217,11 @@
     body {
       margin: 0;
       padding: 0;
-    }
-    .background {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      background-image: url("https://linebot-wpp0.onrender.com/static/Map/map.png");
-      background-size: 100% 100%;            /* 或試試 contain, 100% 100% */
-      background-position: center center;
+      background-image: url('background.jpg');
+      background-size: cover;      /* 自動縮放填滿 */
+      background-position: center; /* 圖片置中對齊 */
       background-repeat: no-repeat;
-      overflow: hidden;
+      height: 100vh;
     }
     .overlay {
       position: absolute;
