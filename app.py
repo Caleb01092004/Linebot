@@ -391,20 +391,12 @@ def handle_message(event):
                     messages=[TextMessage(text='非常任性的創作者設計的支線任務，快去做!')]
                 )
             )
-        elif data == 'Map':
-            line_bot_api.reply_message(
-                ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(
-                        text='這不只是任務地圖，而是一場探索，也是一場迷路。有時候，我們不是為了找到什麼，而是為了看見那些從沒注意過的角落—— 一張你沒拍過的照片、一本沒人借過的書，甚至是一頭你從沒見過的牛。')]
-                )
-            )
         elif data == 'Core':
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
                     messages=[TextMessage(
-                        text='敬請期待')]
+                        text='這個作品以「像素藝術與互動體驗」方向構思，希望透過本作品讓觀眾參與到展品之中，而不單單只是觀看。以像素藝術為風格，創造出一個類似《Minecraft》這樣的像素風格遊戲世界。希望能用這樣的作品，激起同學們對於創新與科技的興趣和同學們對像素藝術的共鳴，並讓他們感受到沉浸式的互動體驗。')]
                 )
             )
         elif data == 'MainTask':
