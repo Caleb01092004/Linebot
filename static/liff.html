@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>LIFF 測試</title>
@@ -206,5 +206,38 @@
     </div>
     
     <div id="statusMessage" class="status-message"></div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LIFF 背景圖片</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        body {
+            background-image: url("https://linebot-wpp0.onrender.com/static/images/map.png"); /* ← 換成你自己的圖片網址 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <script>
+        window.onload = async function () {
+            await liff.init({ liffId: "你的LIFF-ID" }); // ← 請填入你的 LIFF ID
+            if (!liff.isLoggedIn()) {
+                liff.login({ redirectUri: window.location.href });
+            }
+        };
+    </script>
+</head>
+<body>
 </body>
 </html>
