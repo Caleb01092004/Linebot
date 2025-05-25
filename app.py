@@ -380,31 +380,28 @@ def handle_message(event):
             image_carousel_template = ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
-                        image_url='https://linebot-wpp0.onrender.com/static/Lotus.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/cater.png',
                         action=URIAction(
                             label='TouchToOpen',
-                            #uri='https://digital-art-frontend.onrender.com/lotus'
                             uri = 'https://liff.line.me/2007392080-gEDLrwOD'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/turtle.png',
                         action=URIAction(
                             label='TouchToOpen',
-                            #uri='https://digital-art-frontend.onrender.com/muu'
                             uri = 'https://liff.line.me/2007392080-L1Kjqd9K'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/code.png',
                         action=URIAction(
                             label='TouchToOpen',
-                            #uri='https://digital-art-frontend.onrender.com/gender'
                             uri = 'https://liff.line.me/2007392080-BQjk8XQj'
                         )
                     ),
                     ImageCarouselColumn(
-                        image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
+                        image_url='https://linebot-wpp0.onrender.com/static/cow.png',
                         action=URIAction(
                             label='TouchToOpen',
                             uri = 'https://liff.line.me/2007392080-ybnwboRn'
