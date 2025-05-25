@@ -314,8 +314,6 @@ def handle_message(event):
                 )
             )
         else:
-        #reply_message
-        #line_bot_api.reply_message
             result = line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
@@ -376,7 +374,7 @@ def handle_message(event):
                     messages=[image_carousel_message]
                 )
             )
-        if data == 'open_task_menu2':
+        elif data == 'open_task_menu2':
             image_carousel_template = ImageCarouselTemplate(
                 columns=[
                     ImageCarouselColumn(
