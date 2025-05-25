@@ -235,7 +235,7 @@
       max-height: 30px; /* 限制最大高度 */
       width: auto;
       height: auto;
-      display: none;
+      /* display: none; */
       z-index: 10;
     }
   </style>
@@ -278,7 +278,7 @@
         }
         async function fetchUserData(userId) {
             try {
-                const response = await fetch(`https://digital-art-backend-nq89.onrender.com/api/users/U405f4b7b17e934ac70b0c2169ecaf1df`);
+                const response = await fetch(`https://digital-art-backend-nq89.onrender.com/api/users/${userId}`);
                 
                 if (!response.ok) {
                     throw new Error(`请求失败: ${response.status}`);
