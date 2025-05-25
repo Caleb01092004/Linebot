@@ -334,17 +334,17 @@
         if (data.gender && icons.gender) icons.gender.style.display = 'block';
         if (data.muu && icons.muu) icons.muu.style.display = 'block';
         
-        // 添加點擊事件範例
-        Object.values(icons).forEach(icon => {
-          if (icon) {
-            icon.addEventListener('click', () => {
-              liff.sendMessages([{
-                type: 'text',
-                text: '您點擊了地圖標記!'
-              }]).catch(console.error);
-            });
-          }
-        });
+        // // 添加點擊事件範例
+        // Object.values(icons).forEach(icon => {
+        //   if (icon) {
+        //     icon.addEventListener('click', () => {
+        //       liff.sendMessages([{
+        //         type: 'text',
+        //         text: '您點擊了地圖標記!'
+        //       }]).catch(console.error);
+        //     });
+        //   }
+        // });
         
       } catch (error) {
         console.error('更新疊圖時出錯:', error);
