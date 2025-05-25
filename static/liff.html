@@ -251,7 +251,20 @@
                     
                 const userData = await fetchUserData(userId);
                 await updateOverlays(userData);
-                await sendDataToBackend({userData: userData});
+                const dataSend ={
+                        "userId": userData.userId,
+                        "name": userData.name,
+                        "qualification": userData.qualification,
+                        "echo": userData.echo,
+                        "gender": userData.gender,
+                        "lotus": userData.lotus,
+                        "muu": userData.muu,
+                        "caterpillar": userData.caterpillar,
+                        "cow": userData.cow,
+                        "mouseCode": userData.mouseCode,
+                        "turtle": userData.turtle
+                    };
+                await sendDataToBackend(dataSend);
                 
             } catch (error) {
                 console.error("LIFF 初始化失败:", error);
