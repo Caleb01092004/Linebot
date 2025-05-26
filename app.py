@@ -507,10 +507,12 @@ def handle_message(event):
                 )
             )
         elif data == 'MuuOut':
-            ReplyMessageRequest(
-                    reply_token=event.reply_token,
-                    messages=[TextMessage(text='MUU傳送門\n前往Muu官方line完成任務:https://line.me/R/ti/p/@233yywby \nMuuX地圖大哉問:https://liff.line.me/2007392080-L1Kjqd9K')]
+            line_bot_api.reply_message(
+                ReplyMessageRequest(
+                        reply_token=event.reply_token,
+                        messages=[TextMessage(text='MUU傳送門\n前往Muu官方line完成任務:https://line.me/R/ti/p/@233yywby \nMuuX地圖大哉問:https://liff.line.me/2007392080-L1Kjqd9K')]
                 )
+            )
         else:
             line_bot_api.reply_message(
                 ReplyMessageRequest(
