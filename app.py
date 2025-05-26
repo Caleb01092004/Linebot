@@ -354,10 +354,14 @@ def handle_message(event):
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/Muu.jpg',
-                        action=URIAction(
-                            label='TouchToOpen',
-                            uri = 'https://liff.line.me/2007392080-L1Kjqd9K'
+                        action=PostbackAction(
+                            label="TouchToOpen",
+                            data='MuuOut',
                         )
+                        # action=URIAction(
+                        #     label='TouchToOpen',
+                        #     uri = 'https://liff.line.me/2007392080-L1Kjqd9K'
+                        # )
                     ),
                     ImageCarouselColumn(
                         image_url='https://linebot-wpp0.onrender.com/static/ReStyle.jpg',
@@ -502,6 +506,11 @@ def handle_message(event):
                     ]
                 )
             )
+        elif data == 'MuuOut':
+            ReplyMessageRequest(
+                    reply_token=event.reply_token,
+                    messages=[TextMessage(text='MUU傳送門\n前往Muu官方line完成任務:https://line.me/R/ti/p/@233yywby \nMuuX地圖大哉問:https://liff.line.me/2007392080-L1Kjqd9K')]
+                )
         else:
             line_bot_api.reply_message(
                 ReplyMessageRequest(
