@@ -374,7 +374,8 @@ def handle_message(event):
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            uri = 'https://liff.line.me/2007392080-ybnwboRn'
+                            # uri = 'https://liff.line.me/2007392080-ybnwboRn'
+                            uri = 'https://www.ntust.edu.tw/home.php'
                         )
                     ),
                 ]
