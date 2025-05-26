@@ -477,7 +477,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='不要\n\n\n\n\n好拉<3這是我的IG:You_as_a_unit\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==')]
+                    messages=[TextMessage(text='不要\n\n\n\n\n好拉~<3不要給別人喔~\nIG:You_as_a_unit\nhttps://www.instagram.com/you_as_a_unit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==')]
                 )
             )
         elif data == 'end':
