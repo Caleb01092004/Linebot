@@ -99,8 +99,9 @@
                         `語言: ${liff.getLanguage()} | 系統: ${liff.getOS()}`;
                     
                     // 發送資料到後端
-                    await sendDataToBackend(data);
-                    //window.location.href = "https://digital-art-frontend.onrender.com/?userId=123&name=Ke&mission=task-completed";
+                    //await sendDataToBackend(data);
+                    //window.location.href = "https://digital-art-frontend.onrender.com/task-completed";
+                    window.location.href = "https://digital-art-frontend.onrender.com/?userId=123&name=Ke&mission=task-completed";
                 }
             } catch (err) {
                 console.error("LIFF 初始化失敗", err);
@@ -133,7 +134,6 @@
                 
                 statusElement.className = "status-message status-success";
                 statusElement.textContent = 'Loading Success!';
-                //window.location.href = "https://digital-art-frontend.onrender.com/turtle";
                 return result;
             } catch (err) {
                 console.error("發送資料失敗", err);

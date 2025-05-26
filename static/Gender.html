@@ -99,8 +99,9 @@
                         `語言: ${liff.getLanguage()} | 系統: ${liff.getOS()}`;
                     
                     // 發送資料到後端
-                    await sendDataToBackend(data);
-                    //window.location.href = `https://digital-art-frontend.onrender.com/?userId=${userId}&name=${displayName}&mission=gender`;
+                    //await sendDataToBackend(data);
+                    //window.location.href = "https://digital-art-frontend.onrender.com/gender";
+                    window.location.href = `https://digital-art-frontend.onrender.com/?userId=${userId}&name=${displayName}&mission=gender`;
                     
                 }
             } catch (err) {
@@ -134,7 +135,6 @@
                 
                 statusElement.className = "status-message status-success";
                 statusElement.textContent = 'Loading Success!';
-                window.location.href = "https://digital-art-frontend.onrender.com/gender";
                 return result;
             } catch (err) {
                 console.error("發送資料失敗", err);
