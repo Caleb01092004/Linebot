@@ -374,8 +374,7 @@ def handle_message(event):
                         image_url='https://linebot-wpp0.onrender.com/static/Phone.jpg',
                         action=URIAction(
                             label='TouchToOpen',
-                            # uri = 'https://liff.line.me/2007392080-ybnwboRn'
-                            uri = 'https://www.ntust.edu.tw/home.php'
+                            uri = 'https://liff.line.me/2007392080-ybnwboRn'
                         )
                     ),
                 ]
@@ -487,14 +486,14 @@ def handle_message(event):
             )
         elif data == 'end':
             line_bot_api.reply_message(
-                # ReplyMessageRequest(
-                #     reply_token=event.reply_token,
-                #     messages=[TextMessage(text='https://liff.line.me/2007392080-yXExAKkE')]
-                # )
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='敬請期待')]
+                    messages=[TextMessage(text='https://liff.line.me/2007392080-yXExAKkE')]
                 )
+                # ReplyMessageRequest(
+                #     reply_token=event.reply_token,
+                #     messages=[TextMessage(text='敬請期待')]
+                # )
             )
         elif data == 'openMap':
             url = 'https://linebot-wpp0.onrender.com/static/Map/map.png'
