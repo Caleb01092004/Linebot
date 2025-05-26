@@ -462,7 +462,8 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='敬請期待')]
+                    messages=[
+        TextMessage(text='▚▞▚▚《UNIT 登入成功》▚▞▚▚  \n    ╭────────────╮  \n    │   PIXEL GAME SYSTEM LOADED   │  \n    ╰────────────╯\n\n    𖦹【任務系統簡介】  \n▸ 本展覽共收錄 8 項任務，分為：\n    【主線任務】\n    與四大展品互動即可通關\n    【支線任務】\n    ☐ 解開摩斯密碼的詭異信號  \n    ☐ 找到校園裡的真・牛      \n    ☐ 與烏龜同框      \n    ☐ 計算神秘生物的腳\n\n—\n\n    🔍【探索方式】\n\n    ✦ 點選下方〔主線任務〕或〔支線任務〕按鈕  \n    ✦ 按提示完成任務（包含前往展品、互動、拍照、輸入答案等）  \n\n    📍若想查看各展品任務地點，請點〔地圖〕按鈕\n\n    —\n    【重要提醒】  \n    ✦ 展覽結束後，你將收到一份專屬「參展證書」  \n    ✦ 請勿刪除此 LINE 帳號，資料無法補發  \n    ✦ 系統記錄非公開，僅作為互動回饋\n \n    —\n\n    🕹 點選下方按鈕，展開你的像素探索。')]
                 )
             )
         elif data == 'LineAccount':
@@ -481,9 +482,13 @@ def handle_message(event):
             )
         elif data == 'end':
             line_bot_api.reply_message(
+                # ReplyMessageRequest(
+                #     reply_token=event.reply_token,
+                #     messages=[TextMessage(text='https://liff.line.me/2007392080-yXExAKkE')]
+                # )
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='https://liff.line.me/2007392080-yXExAKkE')]
+                    messages=[TextMessage(text='敬請期待')]
                 )
             )
         elif data == 'openMap':
