@@ -474,7 +474,9 @@ def handle_message(event):
             line_bot_api.reply_message(
                 ReplyMessageRequest(
                     reply_token=event.reply_token,
-                    messages=[TextMessage(text='地方企鵝良心製作，需要您的關心。\n歡迎一鍵三連，點個免費的小紅心吧。\n關注企鵝IG:idk_cal0109\nhttps://www.instagram.com/idk_cal0109?igsh=YnhpdHg5djdoYjI1')]
+                    #hu07.29
+                    #messages=[TextMessage(text='地方企鵝良心製作，需要您的關心。\n歡迎一鍵三連，點個免費的小紅心吧。\n關注企鵝IG:idk_cal0109\nhttps://www.instagram.com/idk_cal0109?igsh=YnhpdHg5djdoYjI1')]
+                    messages=[TextMessage(text='大創作者良心製作，需要您的關心。\n歡迎一鍵三連，點個免費的小紅心吧。\n關注大創作者IG:hu07.29\nhttps://www.instagram.com/hu07.29?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==')]
                 )
             )
         elif data == 'Contact':
