@@ -101,7 +101,7 @@
                     // 發送資料到後端
                     //await sendDataToBackend(data);
                     //window.location.href = "https://digital-art-frontend.onrender.com/task-completed";
-                    window.location.href = "https://digital-art-frontend.onrender.com/?userId=123&name=Ke&mission=task-completed";
+                    window.location.href = `https://digital-art-frontend.onrender.com/?userId=${userId}&name=${displayName}&mission=task-completed`;
                 }
             } catch (err) {
                 console.error("LIFF 初始化失敗", err);
